@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+
 import './LandingPage.css';
+import axios from 'axios';
+
 
 // CUSTOM COMPONENTS
 import RegisterForm from '../RegisterForm/RegisterForm';
@@ -13,43 +17,37 @@ function LandingPage() {
     history.push('/login');
   };
 
+  //Get a random word from API
+  const dispatch = useDispatch();
+  const random = useSelector((store) => store.randomWordReducer);
+
+  const randomWord = () => {
+    axios.get('/random-word')
+      .then((response) => {
+        if (response.data.results) {
+          if (response.data.results[0].definition && response.data.results[0].partOfSpeech) {
+            dispatch({
+              type: 'SET_RANDOM',
+              payload: response.data
+            });
+          } else { randomWord(); }
+        } else { randomWord(); }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   return (
     <div className="container">
       <h2>{heading}</h2>
 
       <div className="grid">
         <div className="grid-col grid-col_8">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-            id felis metus. Vestibulum et pulvinar tortor. Morbi pharetra lacus
-            ut ex molestie blandit. Etiam et turpis sit amet risus mollis
-            interdum. Suspendisse et justo vitae metus bibendum fringilla sed
-            sed justo. Aliquam sollicitudin dapibus lectus, vitae consequat odio
-            elementum eget. Praesent efficitur eros vitae nunc interdum, eu
-            interdum justo facilisis. Sed pulvinar nulla ac dignissim efficitur.
-            Quisque eget eros metus. Vestibulum bibendum fringilla nibh a
-            luctus. Duis a sapien metus.
-          </p>
-
-          <p>
-            Praesent consectetur orci dui, id elementum eros facilisis id. Sed
-            id dolor in augue porttitor faucibus eget sit amet ante. Nunc
-            consectetur placerat pharetra. Aenean gravida ex ut erat commodo, ut
-            finibus metus facilisis. Nullam eget lectus non urna rhoncus
-            accumsan quis id massa. Curabitur sit amet dolor nisl. Proin
-            euismod, augue at condimentum rhoncus, massa lorem semper lacus, sed
-            lobortis augue mi vel felis. Duis ultrices sapien at est convallis
-            congue.
-          </p>
-
-          <p>
-            Fusce porta diam ac tortor elementum, ut imperdiet metus volutpat.
-            Suspendisse posuere dapibus maximus. Aliquam vitae felis libero. In
-            vehicula sapien at semper ultrices. Vivamus sed feugiat libero. Sed
-            sagittis neque id diam euismod, ut egestas felis ultricies. Nullam
-            non fermentum mauris. Sed in enim ac turpis faucibus pretium in sit
-            amet nisi.
-          </p>
+          <button onClick={randomWord}>RANDOMIZE ME CAPN</button>
+          <p>so rando: {random.word}</p>
+          <p>fergalicious definition: {random.results[0].definition}</p>
+          <p>part  of speech: {random.results[0].partOfSpeech}</p>
         </div>
         <div className="grid-col grid-col_4">
           <RegisterForm />
