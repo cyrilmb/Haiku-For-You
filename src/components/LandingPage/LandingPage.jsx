@@ -38,6 +38,16 @@ function LandingPage() {
       });
   };
 
+  const searchWord = () => {
+    axios.get('/search-word')
+      .then((response) => {
+        console.log('search response:', response);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   return (
     <div className="container">
       <h2>{heading}</h2>
@@ -46,8 +56,10 @@ function LandingPage() {
         <div className="grid-col grid-col_8">
           <button onClick={randomWord}>RANDOMIZE ME CAPN</button>
           <p>so rando: {random.word}</p>
-          <p>fergalicious definition: {random.results[0].definition}</p>
-          <p>part  of speech: {random.results[0].partOfSpeech}</p>
+          <p>fergalicious definition: {random.results?.[0].definition}</p>
+          <p>part  of speech: {random.results?.[0].partOfSpeech}</p>
+          <button onClick={searchWord}>Searchin</button>
+
         </div>
         <div className="grid-col grid-col_4">
           <RegisterForm />
