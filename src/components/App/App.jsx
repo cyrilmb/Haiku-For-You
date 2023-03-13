@@ -20,6 +20,8 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
+import PoemEditor from '../PoemEditor/PoemEditor';
+
 import './App.css';
 
 function App() {
@@ -58,6 +60,7 @@ function App() {
             path="/user"
           >
             <UserPage />
+            <PoemEditor />
           </ProtectedRoute>
 
           <ProtectedRoute
