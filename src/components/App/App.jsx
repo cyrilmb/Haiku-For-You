@@ -19,8 +19,8 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-
-import PoemEditor from '../PoemEditor/PoemEditor';
+import GalleryPage from '../GalleryPage/GalleryPage.jsx';
+import PoemEditor from '../PoemEditor/PoemEditor.jsx';
 
 import './App.css';
 
@@ -60,7 +60,6 @@ function App() {
             path="/user"
           >
             <UserPage />
-            <PoemEditor />
           </ProtectedRoute>
 
           <ProtectedRoute
@@ -69,6 +68,7 @@ function App() {
             path="/info"
           >
             <InfoPage />
+            <PoemEditor />
           </ProtectedRoute>
 
           <Route

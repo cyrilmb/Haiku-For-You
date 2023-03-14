@@ -24,7 +24,7 @@ function HomePoem() {
                         <p>{line.line_1}</p>
                         <p>{line.line_2}</p>
                         <p>{line.line_3}</p>
-                        <p>--{line.username} || {new Date(line.date).toISOString().split("T")[0]}</p>
+                        <p>-- {line.username} || {new Date(line.date).toISOString().split("T")[0]}</p>
                     </div>
                 );
             })}
