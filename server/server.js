@@ -13,6 +13,7 @@ const randomWordRouter = require('./routes/randomWord.router');
 const searchWordRouter = require('./routes/searchWord.router.jsx');
 const poemRouter = require('./routes/addPoem.router.jsx');
 const homePoemRouter = require('./routes/homePoem.router.jsx');
+const galleryRouter = require('./routes/gallery.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -31,6 +32,7 @@ app.use('/random-word', randomWordRouter);
 app.use('/search-word', searchWordRouter);
 app.use('/poem', poemRouter);
 app.use('/home-poem', homePoemRouter);
+app.use('/gallery', galleryRouter);
 
 // Serve static files
 app.use(express.static('build'));
