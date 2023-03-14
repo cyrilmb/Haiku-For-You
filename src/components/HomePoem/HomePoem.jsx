@@ -8,16 +8,17 @@ function HomePoem() {
 
     //Hooks here
     const dispatch = useDispatch();
-    const poem = useSelector(store => store.homePoem);
+    const poem = useSelector(store => store.homePoemReducer);
 
     //Render random poem on load
     useEffect(() => {
         dispatch({ type: 'FETCH_POEM' });
-    });
+    }, []);
 
-
+    console.log('pome:', poem);
     return (
         <div>
+
 
         </div>
     );
