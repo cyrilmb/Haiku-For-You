@@ -4,6 +4,7 @@ import user from './user.reducer';
 import randomWordReducer from './randomWord.reducer';
 import addPoemReducer from './addPoem.reducer';
 import homePoemReducer from './homePoem.reducer';
+import galleryReducer from './gallery.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   randomWordReducer,
   addPoemReducer,
   homePoemReducer,
+  galleryReducer,
 });
 
 export default rootReducer;
