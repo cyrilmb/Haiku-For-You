@@ -3,7 +3,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 function* HomePoem() {
     try {
-        const homePoem = yield axios.get('/home-poem', homePoem.payload);
+        const homePoem = yield axios.get('/home-poem');
         yield put({ type: 'SET_POEM', payload: homePoem.data });
     } catch (error) {
         console.error('error in homepoem get', error);
