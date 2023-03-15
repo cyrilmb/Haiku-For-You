@@ -5,8 +5,27 @@ import { useHistory } from 'react-router-dom';
 import PoemCard from '../PoemCard/PoemCard';
 
 function UserPoems() {
+    const dispatch = useDispatch();
+    const gallery = useSelector((store) => store.galleryReducer);
+    const user = useSelector((store) => store.user);
+
+
+    useEffect(() => {
+        dispatch({
+            type: 'FETCH_USER_GALLERY',
+            payload: user.id
+        });
+    }, []);
+
     return (
-        <h3>Your Poems</h3>
+        <div>
+            <h3>GALLERY</h3>
+            {gallery.map((line, i) => {
+                return (
+                    <PoemCard line={line} key={i} />
+                );
+            })}
+        </div>
     );
 }
 
