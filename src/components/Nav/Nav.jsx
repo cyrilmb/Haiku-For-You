@@ -9,7 +9,7 @@ function Nav() {
 
   return (
     <div className="nav">
-      <Link to="/gallery">
+      <Link to="/home">
         <h2 className="nav-title">Haiku-For-You</h2>
       </Link>
       <div>
@@ -30,6 +30,10 @@ function Nav() {
 
             <Link className="navLink" to="/edit">
               Edit Page
+            </Link>
+
+            <Link className="navLink" to="/user-gallery">
+              Your Poems
             </Link>
 
             <LogOutButton className="navLink" />

@@ -38,7 +38,7 @@ function App() {
         <Nav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/gallery */}
-          <Redirect exact from="/" to="/gallery" />
+          <Redirect exact from="/" to="/home" />
 
           {/* Visiting localhost:3000/about will show the about page. */}
           <Route
@@ -78,7 +78,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/home" />
               :
               // Otherwise, show the login page
               <LoginPage />
@@ -101,16 +101,16 @@ function App() {
 
           <Route
             exact
-            path="/gallery"
+            path="/home"
           >
-            {user.id ?
+            {/* {user.id ?
               // If the user is already logged in, 
               // redirect them to the /user page
               <Redirect to="/user" />
-              :
-              // Otherwise, show the HomePoem page
-              <HomePoem />
-            }
+              : */}
+            {/* // Otherwise, show the HomePoem page */}
+            <HomePoem />
+            {/* } */}
           </Route>
 
           {/* If none of the other routes matched, we will show a 404. */}
