@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
+import PoemCard from '../PoemCard/PoemCard';
+
 function HomePoem() {
 
     //Hooks here
@@ -13,19 +15,12 @@ function HomePoem() {
         dispatch({ type: 'FETCH_POEM' });
     }, []);
 
-    console.log('poem:', poem);
 
     return (
         <div>
             {poem.map((line, i) => {
                 return (
-                    <div key={i}>
-                        <h3>{line.title}</h3>
-                        <p>{line.line_1}</p>
-                        <p>{line.line_2}</p>
-                        <p>{line.line_3}</p>
-                        <p>-- {line.username} || {new Date(line.date).toISOString().split("T")[0]}</p>
-                    </div>
+                    <PoemCard line={line} key={i} />
                 );
             })}
         </div>

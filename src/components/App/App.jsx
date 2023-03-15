@@ -59,6 +59,7 @@ function App() {
             exact
             path="/user"
           >
+            <GalleryPage />
             <UserPage />
           </ProtectedRoute>
 
