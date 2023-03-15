@@ -14,7 +14,7 @@ const searchWordRouter = require('./routes/searchWord.router.jsx');
 const poemRouter = require('./routes/addPoem.router.jsx');
 const homePoemRouter = require('./routes/homePoem.router.jsx');
 const galleryRouter = require('./routes/gallery.router.jsx');
-const userGalleryRouter = require('./routes/userGallery.router');
+const userGalleryRouter = require('./routes/userGallery.router.jsx');
 
 // Body parser middleware
 app.use(bodyParser.json());
