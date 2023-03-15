@@ -1,8 +1,12 @@
 const express = require('express');
+const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
+const {
+    rejectUnauthenticated,
+} = require('../modules/authentication-middleware');
 
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
     const query = `SELECT "user".username, "title", "line_1", "line_2", "line_3", "date" FROM "poems"
                     JOIN "user" ON "poems".user_id = "user".id
                     ORDER BY date;

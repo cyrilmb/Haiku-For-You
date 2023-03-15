@@ -19,7 +19,8 @@ import EditPage from '../EditPage/EditPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import GalleryPage from '../GalleryPage/GalleryPage.jsx';
-import HomePoem from '../HomePoem/HomePoem';
+import HomePoem from '../HomePoem/HomePoem.jsx';
+import UserPoems from '../UserPoems/UserPoems.jsx';
 
 import './App.css';
 
@@ -50,16 +51,16 @@ function App() {
           </Route>
 
           {/* For protected routes, the view could show one of several things on the same route.
-            Visiting localhost:3000/user will show the UserPage if the user is logged in.
+            Visiting localhost:3000/gallery will show the Gallery if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
-            Even though it seems like they are different pages, the user is always on localhost:3000/user */}
+            Even though it seems like they are different pages, the user is always on localhost:3000/gallery */}
           <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
+            // logged in shows Gallery else shows LoginPage
             exact
-            path="/user"
+            path="/gallery"
           >
             <GalleryPage />
-            <UserPage />
+            {/* <UserPage /> */}
           </ProtectedRoute>
 
           <ProtectedRoute
@@ -71,13 +72,22 @@ function App() {
 
           </ProtectedRoute>
 
+          <ProtectedRoute
+            // logged in shows the User-Gallery page, else shows LoginPage
+            exact
+            path="/user-gallery"
+          >
+            <UserPoems />
+
+          </ProtectedRoute>
+
           <Route
             exact
             path="/login"
           >
             {user.id ?
               // If the user is already logged in, 
-              // redirect to the /user page
+              // redirect to the /home page
               <Redirect to="/home" />
               :
               // Otherwise, show the login page
@@ -91,8 +101,8 @@ function App() {
           >
             {user.id ?
               // If the user is already logged in, 
-              // redirect them to the /user page
-              <Redirect to="/user" />
+              // redirect them to the /gallery page
+              <Redirect to="/gallery" />
               :
               // Otherwise, show the registration page
               <RegisterPage />
