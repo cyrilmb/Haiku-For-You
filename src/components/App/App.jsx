@@ -15,12 +15,11 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
-import LandingPage from '../LandingPage/LandingPage';
+import EditPage from '../EditPage/EditPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import GalleryPage from '../GalleryPage/GalleryPage.jsx';
-import PoemEditor from '../PoemEditor/PoemEditor.jsx';
+import HomePoem from '../HomePoem/HomePoem';
 
 import './App.css';
 
@@ -38,8 +37,8 @@ function App() {
       <div>
         <Nav />
         <Switch>
-          {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
-          <Redirect exact from="/" to="/home" />
+          {/* Visiting localhost:3000 will redirect to localhost:3000/gallery */}
+          <Redirect exact from="/" to="/gallery" />
 
           {/* Visiting localhost:3000/about will show the about page. */}
           <Route
@@ -64,12 +63,12 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
+            // logged in shows EditPage else shows LoginPage
             exact
-            path="/info"
+            path="/edit"
           >
-            <InfoPage />
-            <PoemEditor />
+            <EditPage />
+
           </ProtectedRoute>
 
           <Route
@@ -102,15 +101,15 @@ function App() {
 
           <Route
             exact
-            path="/home"
+            path="/gallery"
           >
             {user.id ?
               // If the user is already logged in, 
               // redirect them to the /user page
               <Redirect to="/user" />
               :
-              // Otherwise, show the Landing page
-              <LandingPage />
+              // Otherwise, show the HomePoem page
+              <HomePoem />
             }
           </Route>
 

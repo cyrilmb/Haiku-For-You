@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-function PoemEditor() {
+function EditForm() {
 
     //Hooks
     const dispatch = useDispatch();
@@ -54,4 +54,4 @@ function PoemEditor() {
     );
 }
 
-export default PoemEditor;
+export default EditForm;

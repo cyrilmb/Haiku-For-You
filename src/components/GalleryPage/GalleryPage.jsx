@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import HomePoem from '../HomePoem/HomePoem';
+import PoemCard from '../PoemCard/PoemCard';
 
 function GalleryPage() {
 
@@ -16,9 +16,9 @@ function GalleryPage() {
     return (
         <div>
             <h3>GALLERY</h3>
-            {gallery.map((poem, i) => {
+            {gallery.map((line, i) => {
                 return (
-                    <HomePoem poem={poem} key={i} />
+                    <PoemCard line={line} key={i} />
                 );
             })}
         </div>

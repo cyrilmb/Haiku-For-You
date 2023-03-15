@@ -9,7 +9,7 @@ function Nav() {
 
   return (
     <div className="nav">
-      <Link to="/home">
+      <Link to="/gallery">
         <h2 className="nav-title">Haiku-For-You</h2>
       </Link>
       <div>
@@ -25,11 +25,11 @@ function Nav() {
         {user.id && (
           <>
             <Link className="navLink" to="/user">
-              Home
+              Gallery
             </Link>
 
-            <Link className="navLink" to="/info">
-              Info Page
+            <Link className="navLink" to="/edit">
+              Edit Page
             </Link>
 
             <LogOutButton className="navLink" />

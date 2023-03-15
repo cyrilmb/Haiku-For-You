@@ -1,5 +1,5 @@
 import React from 'react';
-import HomePoem from '../HomePoem/HomePoem';
+
 
 // This is one of our simplest components
 // It doesn't have local state,
@@ -9,7 +9,7 @@ import HomePoem from '../HomePoem/HomePoem';
 function AboutPage() {
   return (
     <div className="container">
-      <HomePoem />
+
     </div>
   );
 }
