@@ -40,8 +40,6 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
 
 //PUT poem, sends edited poem to replace poem in database by id
 router.put('/:id', rejectUnauthenticated, (req, res) => {
-    console.log('req.body', req.body);
-
     const queryText = `UPDATE "poems" 
                         SET "title" = $1, "line_1" = $2, "line_2" = $3, "line_3" = $4 
                         WHERE "id" = $5 AND "user_id" = $6;

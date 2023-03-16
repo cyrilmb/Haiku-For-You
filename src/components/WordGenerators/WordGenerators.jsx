@@ -1,3 +1,8 @@
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
+
 function WordGenerators() {
     //Get a random word from API
     const dispatch = useDispatch();
@@ -40,3 +45,5 @@ function WordGenerators() {
         </div>
     );
 }
+
+export default WordGenerators;

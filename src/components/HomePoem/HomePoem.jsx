@@ -23,7 +23,8 @@ function HomePoem() {
                     <PoemCard line={line} key={i} />
                 );
             })}
-        </div>
+            <button onClick={() => dispatch({ type: 'FETCH_POEM' })}>Get New Poem</button>
+        </div >
     );
 }
 

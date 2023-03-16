@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
     const options = {
         method: 'GET',
         url: 'https://wordsapiv1.p.rapidapi.com/words/',
-        params: { partofspeech: verb, limit: '50', page: '4' },
+        params: { limit: '1', partOfSpeech: 'verb', page: '10' },
         headers: {
             'X-RapidAPI-Key': process.env.RANDOM_WORD_API_KEY,
             'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'

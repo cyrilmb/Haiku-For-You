@@ -1,5 +1,6 @@
 import React from 'react';
 
+import WordGenerators from '../WordGenerators/WordGenerators';
 
 // This is one of our simplest components
 // It doesn't have local state,
@@ -9,7 +10,7 @@ import React from 'react';
 function AboutPage() {
   return (
     <div className="container">
-
+      <WordGenerators />
     </div>
   );
 }
