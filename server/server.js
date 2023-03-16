@@ -10,11 +10,11 @@ const passport = require('./strategies/user.strategy');
 // Route includes
 const userRouter = require('./routes/user.router');
 const randomWordRouter = require('./routes/randomWord.router');
-const searchWordRouter = require('./routes/searchWord.router.jsx');
-const poemRouter = require('./routes/addPoem.router.jsx');
-const homePoemRouter = require('./routes/homePoem.router.jsx');
-const galleryRouter = require('./routes/gallery.router.jsx');
-const userGalleryRouter = require('./routes/userGallery.router.jsx');
+const searchWordRouter = require('./routes/searchWord.router.js');
+const poemRouter = require('./routes/addPoem.router.js');
+const homePoemRouter = require('./routes/homePoem.router.js');
+const galleryRouter = require('./routes/gallery.router.js');
+const userGalleryRouter = require('./routes/userGallery.router.js');
 
 // Body parser middleware
 app.use(bodyParser.json());
