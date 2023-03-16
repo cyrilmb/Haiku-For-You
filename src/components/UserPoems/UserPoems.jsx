@@ -5,10 +5,11 @@ import { useHistory } from 'react-router-dom';
 import PoemCard from '../PoemCard/PoemCard';
 
 function UserPoems() {
+    //HOOKS!
     const dispatch = useDispatch();
     const gallery = useSelector((store) => store.galleryReducer);
     const user = useSelector((store) => store.user);
-
+    const history = useHistory();
 
     useEffect(() => {
         dispatch({
@@ -30,6 +31,10 @@ function UserPoems() {
 
     const handleEdit = (poem) => {
         console.log(poem);
+        history.push({
+            pathname: '/edit-user',
+            state: { detail: poem }
+        });
     };
 
     return (

@@ -21,6 +21,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import GalleryPage from '../GalleryPage/GalleryPage.jsx';
 import HomePoem from '../HomePoem/HomePoem.jsx';
 import UserPoems from '../UserPoems/UserPoems.jsx';
+import EditUserPoem from '../EditUserPoem/EditUserPoem';
 
 import './App.css';
 
@@ -69,6 +70,15 @@ function App() {
             path="/edit"
           >
             <EditPage />
+
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows EditPage else shows LoginPage
+            exact
+            path="/edit-user"
+          >
+            <EditUserPoem />
 
           </ProtectedRoute>
 

@@ -24,30 +24,34 @@ function EditForm() {
     return (
         <div>
             <form onSubmit={addNewPoem}>
+                Title <br />
                 <input
                     type='text'
                     placeholder='title'
                     value={newPoem.title}
                     onChange={(e) => handleChange(e, 'title')}
-                />
+                /> <br />
+                Line 1 <br />
                 <input
                     type='text'
                     placeholder='line 1'
                     value={newPoem.line_1}
                     onChange={(e) => handleChange(e, 'line_1')}
-                />
+                /> <br />
+                Line 2 <br />
                 <input
                     type='text'
                     placeholder='line 2'
                     value={newPoem.line_2}
                     onChange={(e) => handleChange(e, 'line_2')}
-                />
+                /> <br />
+                Line 3 <br />
                 <input
                     type='text'
                     placeholder='line 3'
                     value={newPoem.line_3}
                     onChange={(e) => handleChange(e, 'line_3')}
-                />
+                /> <br />
                 <input type="submit" value="Submit Your Poem" />
             </form>
         </div>
