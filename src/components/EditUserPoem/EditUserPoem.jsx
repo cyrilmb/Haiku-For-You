@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 
 function EditUserPoem({ poem }) {
 
     //Hooks
     const dispatch = useDispatch();
     const location = useLocation();
+    const history = useHistory();
 
     poem = location.state.detail;
 
-    let [newPoem, setNewPoem] = useState({ title: '', line_1: '', line_2: '', line_3: '' });
+    let [newPoem, setNewPoem] = useState({ title: '', line_1: '', line_2: '', line_3: '', id: poem.id });
 
     //Handle changes to inputs in form
     // const handleChange = (event, key) => {
@@ -21,9 +22,10 @@ function EditUserPoem({ poem }) {
     const addNewPoem = (event) => {
         event.preventDefault();
         dispatch({
-            type: 'POST_POEM',
+            type: 'PUT_POEM',
             payload: newPoem
         });
+        history.push({ pathname: '/user-gallery' });
     };
 
     return (

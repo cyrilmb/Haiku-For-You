@@ -27,10 +27,21 @@ function* deletePoem(action) {
     }
 }
 
+function* editPoem(action) {
+    try {
+        console.log('action.payload', action.payload);
+
+        yield axios.put(`/user-gallery/${action.payload.id}`, { payload: action.payload });
+    } catch (error) {
+        console.log('Error in PUT poem saga', error);
+    }
+}
+
 function* gallerySaga() {
     yield takeLatest('FETCH_GALLERY', allGallery);
     yield takeLatest('FETCH_USER_GALLERY', userGallery);
     yield takeLatest('DELETE_POEM', deletePoem);
+    yield takeLatest('PUT_POEM', editPoem);
 }
 
 export default gallerySaga;
