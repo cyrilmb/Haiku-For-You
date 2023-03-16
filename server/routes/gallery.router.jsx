@@ -6,7 +6,7 @@ const {
 } = require('../modules/authentication-middleware');
 
 router.get('/', rejectUnauthenticated, (req, res) => {
-    const query = `SELECT "user".username, "title", "line_1", "line_2", "line_3", "date" FROM "poems"
+    const query = `SELECT "user".username, "poems".id, "title", "line_1", "line_2", "line_3", "date" FROM "poems"
                     JOIN "user" ON "poems".user_id = "user".id
                     ORDER BY date;
                     `;

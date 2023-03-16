@@ -17,15 +17,34 @@ function UserPoems() {
         });
     }, []);
 
+    const handleDelete = (id) => {
+        dispatch({
+            type: 'DELETE_POEM',
+            payload: id
+        });
+        dispatch({
+            type: 'FETCH_USER_GALLERY',
+            payload: user.id
+        });
+    };
+
+    const handleEdit = (poem) => {
+        console.log(poem);
+    };
+
     return (
         <div>
             <h3>GALLERY</h3>
             {gallery.map((line, i) => {
                 return (
-                    <PoemCard line={line} key={i} />
+                    <div key={i}>
+                        <PoemCard line={line} />
+                        <button onClick={() => handleEdit(line)}>Edit</button>
+                        <button onClick={() => handleDelete(line.id)}>Delete</button>
+                    </div>
                 );
             })}
-        </div>
+        </div >
     );
 }
 
