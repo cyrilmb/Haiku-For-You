@@ -13,19 +13,14 @@ function EditUserPoem({ poem }) {
     const user = useSelector((store) => store.user);
 
 
-    let [newPoem, setNewPoem] = useState({ title: poem.title, line_1: poem.line_1, line_2: poem.line_2, line_3: poem.line_3, id: poem.id });
-
-    //Handle changes to inputs in form
-    // const handleChange = (event, key) => {
-    //     setNewPoem({ ...newPoem, [key]: event.target.value });
-    // };
+    let [editPoem, setEditPoem] = useState({ title: poem.title, line_1: poem.line_1, line_2: poem.line_2, line_3: poem.line_3, id: poem.id });
 
     //Dispatch input values to be stored in db
-    const addNewPoem = (event) => {
+    const addEdit = (event) => {
         event.preventDefault();
         dispatch({
             type: 'PUT_POEM',
-            payload: newPoem
+            payload: editPoem
         });
         dispatch({
             type: 'FETCH_USER_GALLERY',
@@ -36,34 +31,34 @@ function EditUserPoem({ poem }) {
 
     return (
         <div>
-            <form onSubmit={addNewPoem}>
+            <form onSubmit={addEdit}>
                 Title <br />
                 <input
                     type='text'
                     defaultValue={poem.title}
-                    // value={newPoem.title}
-                    onChange={(event) => setNewPoem({ ...newPoem, title: event.target.value })}
+                    // value={editPoem.title}
+                    onChange={(event) => setEditPoem({ ...editPoem, title: event.target.value })}
                 /> <br />
                 Line 1 <br />
                 <input
                     type='text'
                     defaultValue={poem.line_1}
-                    // value={newPoem.line_1}
-                    onChange={(event) => setNewPoem({ ...newPoem, line_1: event.target.value })}
+                    // value={editPoem.line_1}
+                    onChange={(event) => setEditPoem({ ...editPoem, line_1: event.target.value })}
                 /> <br />
                 Line 2 <br />
                 <input
                     type='text'
                     defaultValue={poem.line_2}
-                    // value={newPoem.line_2}
-                    onChange={(event) => setNewPoem({ ...newPoem, line_2: event.target.value })}
+                    // value={editPoem.line_2}
+                    onChange={(event) => setEditPoem({ ...editPoem, line_2: event.target.value })}
                 /> <br />
                 Line 3 <br />
                 <input
                     type='text'
                     defaultValue={poem.line_3}
-                    // value={newPoem.line_3}
-                    onChange={(event) => setNewPoem({ ...newPoem, line_3: event.target.value })}
+                    // value={editPoem.line_3}
+                    onChange={(event) => setEditPoem({ ...editPoem, line_3: event.target.value })}
                 /> <br />
                 <input type='submit' value='Submit Changes' />
                 <button onClick={() => history.back()}>Cancel</button>

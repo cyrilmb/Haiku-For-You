@@ -22,6 +22,7 @@ import GalleryPage from '../GalleryPage/GalleryPage.jsx';
 import HomePoem from '../HomePoem/HomePoem.jsx';
 import UserPoems from '../UserPoems/UserPoems.jsx';
 import EditUserPoem from '../EditUserPoem/EditUserPoem';
+import AddPoemPage from '../AddPoemPage/AddPoemPage';
 
 import './App.css';
 
@@ -62,6 +63,15 @@ function App() {
           >
             <GalleryPage />
             {/* <UserPage /> */}
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows EditPage else shows LoginPage
+            exact
+            path="/add-poem"
+          >
+            <AddPoemPage />
+
           </ProtectedRoute>
 
           <ProtectedRoute

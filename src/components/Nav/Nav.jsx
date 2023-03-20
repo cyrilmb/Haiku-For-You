@@ -28,8 +28,12 @@ function Nav() {
               Gallery
             </Link>
 
+            <Link className="navLink" to="/add-poem">
+              Add A Poem
+            </Link>
+
             <Link className="navLink" to="/edit">
-              Edit Page
+              Edit Poem
             </Link>
 
             <Link className="navLink" to="/user-gallery">

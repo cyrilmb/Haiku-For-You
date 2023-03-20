@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
     params: {
       page: '1',
       limit: '100',
-      partOfSpeech: 'pronoun',
+      partOfSpeech: 'noun',
       hasDetails: 'definition',
       syllablesMax: '4',
       frequencyMin: '3',
