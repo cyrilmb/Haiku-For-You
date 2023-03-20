@@ -51,12 +51,23 @@ function* Conjunction() {
     }
 }
 
+function* Preposition() {
+    try {
+        const preposition = yield axios.get('/random-preposition');
+        yield put({ type: 'SET_PREPOSITION', payload: preposition.data });
+    } catch (error) {
+        console.error('error in GET preposition', error);
+    }
+}
+
 function* grammarSaga() {
     yield takeLatest('FETCH_NOUN', Noun);
     yield takeLatest('FETCH_VERB', Verb);
     yield takeLatest('FETCH_ADJECTIVE', Adjective);
     yield takeLatest('FETCH_ADVERB', Adverb);
     yield takeLatest('FETCH_CONJUNCTION', Conjunction);
+    yield takeLatest('FETCH_PREPOSITION', Preposition);
+
 }
 
 export default grammarSaga;

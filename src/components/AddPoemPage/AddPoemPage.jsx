@@ -11,6 +11,7 @@ function AddPoemPage() {
     const adjective = useSelector((store) => store.randomAdjectiveReducer);
     const adverb = useSelector((store) => store.randomAdverbReducer);
     const conjunction = useSelector((store) => store.randomConjunctionReducer);
+    const preposition = useSelector((store) => store.randomPrepositionReducer);
 
 
     const getNoun = () => {
@@ -33,6 +34,10 @@ function AddPoemPage() {
         dispatch({ type: 'FETCH_CONJUNCTION' });
     };
 
+    const getPreposition = () => {
+        dispatch({ type: 'FETCH_PREPOSITION' });
+    };
+
     return (
         <div>
             <button onClick={getNoun}>Get Noun</button>
@@ -45,6 +50,8 @@ function AddPoemPage() {
             <p>Adverb: {adverb}</p>
             <button onClick={getConjunction}>Get Conjunction</button>
             <p>Conjunction: {conjunction}</p>
+            <button onClick={getPreposition}>Get Preposition</button>
+            <p>Preposition: {preposition}</p>
         </div>
     );
 };
