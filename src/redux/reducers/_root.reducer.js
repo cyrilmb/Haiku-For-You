@@ -6,6 +6,7 @@ import addPoemReducer from './addPoem.reducer';
 import homePoemReducer from './homePoem.reducer';
 import galleryReducer from './gallery.reducer';
 import randomNounReducer from './randomNoun.reducer';
+import randomVerbReducer from './randomVerb.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   homePoemReducer,
   galleryReducer,
   randomNounReducer,
+  randomVerbReducer,
 });
 
 export default rootReducer;

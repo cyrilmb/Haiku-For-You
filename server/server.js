@@ -15,7 +15,8 @@ const poemRouter = require('./routes/addPoem.router.js');
 const homePoemRouter = require('./routes/homePoem.router.js');
 const galleryRouter = require('./routes/gallery.router.js');
 const userGalleryRouter = require('./routes/userGallery.router.js');
-const randomNounRouter = require('./routes/randomNoun.router.js');
+const randomNounRouter = require('./routes/noun.router.js');
+const randomVerbRouter = require('./routes/verb.router.js');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -37,6 +38,7 @@ app.use('/home-poem', homePoemRouter);
 app.use('/gallery', galleryRouter);
 app.use('/user-gallery', userGalleryRouter);
 app.use('/random-noun', randomNounRouter);
+app.use('/random-verb', randomVerbRouter);
 
 // Serve static files
 app.use(express.static('build'));

@@ -7,12 +7,12 @@ router.get('/', (req, res) => {
     method: 'GET',
     url: 'https://wordsapiv1.p.rapidapi.com/words/',
     params: {
-      page: '1',
+      page: `${Math.floor(Math.random() * 190) + 1}`,
       limit: '100',
       partOfSpeech: 'noun',
       hasDetails: 'definition',
       syllablesMax: '4',
-      frequencyMin: '3',
+      frequencyMin: '2',
     },
     headers: {
       'X-RapidAPI-Key': process.env.RANDOM_WORD_API_KEY,
@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
     .request(options)
     .then((response) => {
       let resp = response.data;
-      console.log(resp.results.data);
+      console.log(resp);
       res.send(resp.results.data);
     })
     .catch((error) => {
