@@ -69,6 +69,15 @@ function* HelpingVerb() {
     }
 }
 
+function* Pronoun() {
+    try {
+        const pronoun = yield axios.get('/random-pronoun');
+        yield put({ type: 'SET_PRONOUN', payload: pronoun.data });
+    } catch (error) {
+        console.error('error in GET pronoun', error);
+    }
+}
+
 function* grammarSaga() {
     yield takeLatest('FETCH_NOUN', Noun);
     yield takeLatest('FETCH_VERB', Verb);
@@ -77,6 +86,7 @@ function* grammarSaga() {
     yield takeLatest('FETCH_CONJUNCTION', Conjunction);
     yield takeLatest('FETCH_PREPOSITION', Preposition);
     yield takeLatest('FETCH_HELPING_VERB', HelpingVerb);
+    yield takeLatest('FETCH_PRONOUN', Pronoun);
 }
 
 export default grammarSaga;

@@ -12,6 +12,7 @@ import randomAdverbReducer from './randomAdverb.reducer';
 import randomConjunctionReducer from './randomConunction.reducer';
 import randomPrepositionReducer from './randomPreposition.reducer';
 import randomHelpingVerbReducer from './randomHelpingVerb.reducer';
+import randomPronounReducer from './randomPronoun.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -33,6 +34,7 @@ const rootReducer = combineReducers({
   randomConjunctionReducer,
   randomPrepositionReducer,
   randomHelpingVerbReducer,
+  randomPronounReducer,
 });
 
 export default rootReducer;

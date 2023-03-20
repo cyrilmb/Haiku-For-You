@@ -13,6 +13,7 @@ function AddPoemPage() {
     const conjunction = useSelector((store) => store.randomConjunctionReducer);
     const preposition = useSelector((store) => store.randomPrepositionReducer);
     const helpingVerb = useSelector((store) => store.randomHelpingVerbReducer);
+    const pronoun = useSelector((store) => store.randomPronounReducer);
 
 
     const getNoun = () => {
@@ -43,6 +44,10 @@ function AddPoemPage() {
         dispatch({ type: 'FETCH_HELPING_VERB' });
     };
 
+    const getPronoun = () => {
+        dispatch({ type: 'FETCH_PRONOUN' });
+    };
+
     return (
         <div>
             <button onClick={getNoun}>Get Noun</button>
@@ -59,6 +64,8 @@ function AddPoemPage() {
             <p>Preposition: {preposition}</p>
             <button onClick={getHelpingVerb}>Get Helping Verb</button>
             <p>Helping Verb: {helpingVerb}</p>
+            <button onClick={getPronoun}>Get Pronoun</button>
+            <p>Pronoun: {pronoun}</p>
         </div>
     );
 };
