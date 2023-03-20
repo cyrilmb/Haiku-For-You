@@ -7,9 +7,9 @@ router.get('/', (req, res) => {
     method: 'GET',
     url: 'https://wordsapiv1.p.rapidapi.com/words/',
     params: {
-      page: `${Math.floor(Math.random() * 61) + 1}`,
+      page: `${Math.floor(Math.random() * 9) + 1}`,
       limit: '100',
-      partOfSpeech: 'adjective',
+      partOfSpeech: 'adverb',
       hasDetails: 'definition',
       syllablesMax: '4',
       frequencyMin: '2',
@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
       res.send(resp.results.data);
     })
     .catch((error) => {
-      console.error('Error in GET adjective API', error);
+      console.error('Error in GET adverb API', error);
       res.sendStatus(500);
     });
 });
