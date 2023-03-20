@@ -60,6 +60,15 @@ function* Preposition() {
     }
 }
 
+function* HelpingVerb() {
+    try {
+        const helping_verb = yield axios.get('/random-helping-verb');
+        yield put({ type: 'SET_HELPING_VERB', payload: helping_verb.data });
+    } catch (error) {
+        console.error('error in GET helping_verb', error);
+    }
+}
+
 function* grammarSaga() {
     yield takeLatest('FETCH_NOUN', Noun);
     yield takeLatest('FETCH_VERB', Verb);
@@ -67,7 +76,7 @@ function* grammarSaga() {
     yield takeLatest('FETCH_ADVERB', Adverb);
     yield takeLatest('FETCH_CONJUNCTION', Conjunction);
     yield takeLatest('FETCH_PREPOSITION', Preposition);
-
+    yield takeLatest('FETCH_HELPING_VERB', HelpingVerb);
 }
 
 export default grammarSaga;
