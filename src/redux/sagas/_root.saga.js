@@ -5,6 +5,7 @@ import userSaga from './user.saga';
 import addNewPoemSaga from './addPoem.saga.jsx';
 import homePoemSaga from './homePoem.saga';
 import gallerySaga from './gallery.saga';
+import grammarSaga from './grammar.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -21,5 +22,6 @@ export default function* rootSaga() {
     addNewPoemSaga(),
     homePoemSaga(),
     gallerySaga(),
+    grammarSaga(),
   ]);
 }

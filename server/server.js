@@ -19,6 +19,7 @@ const randomNounRouter = require('./routes/noun.router.js');
 const randomVerbRouter = require('./routes/verb.router.js');
 const randomAdjectiveRouter = require('./routes/adjective.router.js');
 const randomAdverbRouter = require('./routes/adverb.router.js');
+const randomConjunctionRouter = require('./routes/conjunction.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -43,6 +44,7 @@ app.use('/random-noun', randomNounRouter);
 app.use('/random-verb', randomVerbRouter);
 app.use('/random-adjective', randomAdjectiveRouter);
 app.use('/random-adverb', randomAdverbRouter);
+app.use('/random-conjunction', randomConjunctionRouter);
 
 // Serve static files
 app.use(express.static('build'));

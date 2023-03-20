@@ -10,65 +10,27 @@ function AddPoemPage() {
     const verb = useSelector((store) => store.randomVerbReducer);
     const adjective = useSelector((store) => store.randomAdjectiveReducer);
     const adverb = useSelector((store) => store.randomAdverbReducer);
+    const conjunction = useSelector((store) => store.randomConjunctionReducer);
+
 
     const getNoun = () => {
-        axios.get('/random-noun')
-            .then((response) => {
-                console.log('search response:', response);
-                let newNoun = response.data[Math.floor(Math.random() * response.data.length)];
-                dispatch({
-                    type: 'SET_NOUN',
-                    payload: newNoun
-                });;
-            })
-            .catch((error) => {
-                console.error('Error in GET noun', error);
-            });
+        dispatch({ type: 'FETCH_NOUN' });
     };
 
     const getVerb = () => {
-        axios.get('/random-verb')
-            .then((response) => {
-                console.log('search response:', response);
-                let newVerb = response.data[Math.floor(Math.random() * response.data.length)];
-                dispatch({
-                    type: 'SET_VERB',
-                    payload: newVerb
-                });;
-            })
-            .catch((error) => {
-                console.error('Error in GET verb', error);
-            });
+        dispatch({ type: 'FETCH_VERB' });
     };
 
     const getAdjective = () => {
-        axios.get('/random-adjective')
-            .then((response) => {
-                console.log('search response:', response);
-                let newAdjective = response.data[Math.floor(Math.random() * response.data.length)];
-                dispatch({
-                    type: 'SET_ADJECTIVE',
-                    payload: newAdjective
-                });;
-            })
-            .catch((error) => {
-                console.error('Error in GET Adjective', error);
-            });
+        dispatch({ type: 'FETCH_ADJECTIVE' });
     };
 
     const getAdverb = () => {
-        axios.get('/random-adverb')
-            .then((response) => {
-                console.log('search response:', response);
-                let newVerb = response.data[Math.floor(Math.random() * response.data.length)];
-                dispatch({
-                    type: 'SET_ADVERB',
-                    payload: newVerb
-                });;
-            })
-            .catch((error) => {
-                console.error('Error in GET adverb', error);
-            });
+        dispatch({ type: 'FETCH_ADVERB' });
+    };
+
+    const getConjunction = () => {
+        dispatch({ type: 'FETCH_CONJUNCTION' });
     };
 
     return (
@@ -81,6 +43,8 @@ function AddPoemPage() {
             <p>Adjective: {adjective}</p>
             <button onClick={getAdverb}>Get Adverb</button>
             <p>Adverb: {adverb}</p>
+            <button onClick={getConjunction}>Get Conjunction</button>
+            <p>Conjunction: {conjunction}</p>
         </div>
     );
 };
