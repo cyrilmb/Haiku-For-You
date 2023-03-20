@@ -24,11 +24,11 @@ router.get('/', (req, res) => {
     .request(options)
     .then((response) => {
       let resp = response.data;
-      console.log(resp);
-      res.send(resp);
+      console.log(resp.results.data);
+      res.send(resp.results.data);
     })
     .catch((error) => {
-      console.error(error);
+      console.error('Error in GET noun API', error);
       res.sendStatus(500);
     });
 });

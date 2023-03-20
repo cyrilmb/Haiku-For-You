@@ -1,4 +1,4 @@
-const randomNounReducer = (state = {}, action) => {
+const randomNounReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_NOUN':
             return action.payload;

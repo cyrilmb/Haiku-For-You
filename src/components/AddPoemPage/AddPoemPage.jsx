@@ -6,7 +6,9 @@ import axios from 'axios';
 function AddPoemPage() {
     //Hooks
     const dispatch = useDispatch();
+    const noun = useSelector((store) => store.randomNounReducer);
 
+    console.log('NOUN', noun);
 
     const getNoun = () => {
         axios.get('/random-noun')
@@ -18,14 +20,14 @@ function AddPoemPage() {
                 });;
             })
             .catch((error) => {
-                console.error(error);
+                console.error('Error in GET noun', error);
             });
     };
 
     return (
         <div>
             <button onClick={getNoun}>Get Noun</button>
-
+            <p>Noun: {noun[1]}</p>
         </div>
     );
 };
