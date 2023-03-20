@@ -17,6 +17,7 @@ const galleryRouter = require('./routes/gallery.router.js');
 const userGalleryRouter = require('./routes/userGallery.router.js');
 const randomNounRouter = require('./routes/noun.router.js');
 const randomVerbRouter = require('./routes/verb.router.js');
+const randomAdjectiveRouter = require('./routes/adjective.router.js');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -39,6 +40,7 @@ app.use('/gallery', galleryRouter);
 app.use('/user-gallery', userGalleryRouter);
 app.use('/random-noun', randomNounRouter);
 app.use('/random-verb', randomVerbRouter);
+app.use('/random-adjective', randomAdjectiveRouter);
 
 // Serve static files
 app.use(express.static('build'));
