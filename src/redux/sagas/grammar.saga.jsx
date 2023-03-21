@@ -4,7 +4,6 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* Noun() {
     try {
         const noun = yield axios.get('/random-noun');
-        console.log('NOUN', noun);
         let newNoun = noun.data[Math.floor(Math.random() * noun.data.length)];
         yield put({ type: 'SET_NOUN', payload: newNoun });
     } catch (error) {
