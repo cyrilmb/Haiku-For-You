@@ -66,6 +66,41 @@ function AddPoemPage() {
         setNewPoem([...newPoem, `${verb} `]);
     };
 
+    const addAdjective = () => {
+        getAdjective();
+        setNewPoem([...newPoem, `${adjective} `]);
+    };
+
+    const addAdverb = () => {
+        getAdverb();
+        setNewPoem([...newPoem, `${adverb} `]);
+    };
+
+    const addConjunction = () => {
+        getConjunction();
+        setNewPoem([...newPoem, `${conjunction} `]);
+    };
+
+    const addPreposition = () => {
+        getPreposition();
+        setNewPoem([...newPoem, `${preposition} `]);
+    };
+
+    const addHelpingVerb = () => {
+        getHelpingVerb();
+        setNewPoem([...newPoem, `${helpingVerb} `]);
+    };
+
+    const addPronoun = () => {
+        getPronoun();
+        setNewPoem([...newPoem, `${pronoun} `]);
+    };
+
+    const addDeterminer = () => {
+        getDeterminer();
+        setNewPoem([...newPoem, `${determiner} `]);
+    };
+
     return (
         <div>
             <button onClick={getNoun}>Get Noun</button>
