@@ -106,7 +106,7 @@ function AddPoemPage() {
     };
 
     const translate = () => {
-        structure.map((int, i) => {
+        for (int of structure) {
             if (int == 1) {
                 addNoun();
             } else if (int == 2) {
