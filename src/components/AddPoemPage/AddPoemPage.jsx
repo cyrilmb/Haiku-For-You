@@ -6,6 +6,8 @@ import axios from 'axios';
 function AddPoemPage() {
     //Hooks
     const dispatch = useDispatch();
+
+    //parts of speech
     const noun = useSelector((store) => store.randomNounReducer);
     const verb = useSelector((store) => store.randomVerbReducer);
     const adjective = useSelector((store) => store.randomAdjectiveReducer);
@@ -15,7 +17,6 @@ function AddPoemPage() {
     const helpingVerb = useSelector((store) => store.randomHelpingVerbReducer);
     const pronoun = useSelector((store) => store.randomPronounReducer);
     const determiner = useSelector((store) => store.randomDeterminerReducer);
-
 
     let [newPoem, setNewPoem] = useState([]);
 
@@ -55,6 +56,16 @@ function AddPoemPage() {
         dispatch({ type: 'FETCH_DETERMINER' });
     };
 
+    const addNoun = () => {
+        getNoun();
+        setNewPoem([...newPoem, `${noun} `]);
+    };
+
+    const addVerb = () => {
+        getVerb();
+        setNewPoem([...newPoem, `${verb} `]);
+    };
+
     return (
         <div>
             <button onClick={getNoun}>Get Noun</button>
@@ -75,6 +86,8 @@ function AddPoemPage() {
             <p>Pronoun: {pronoun}</p>
             <button onClick={getDeterminer}>Get Determiner</button>
             <p>Determiner: {determiner}</p>
+            <button onClick={newSentence}>Get Sentence</button>
+            <p>Did it?: {newPoem}</p>
         </div>
     );
 };
