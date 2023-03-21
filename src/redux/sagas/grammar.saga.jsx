@@ -78,6 +78,15 @@ function* Pronoun() {
     }
 }
 
+function* Determiner() {
+    try {
+        const determiner = yield axios.get('/random-determiner');
+        yield put({ type: 'SET_DETERMINER', payload: determiner.data });
+    } catch (error) {
+        console.error('error in GET determiner', error);
+    }
+}
+
 function* grammarSaga() {
     yield takeLatest('FETCH_NOUN', Noun);
     yield takeLatest('FETCH_VERB', Verb);
@@ -87,6 +96,8 @@ function* grammarSaga() {
     yield takeLatest('FETCH_PREPOSITION', Preposition);
     yield takeLatest('FETCH_HELPING_VERB', HelpingVerb);
     yield takeLatest('FETCH_PRONOUN', Pronoun);
+    yield takeLatest('FETCH_DETERMINER', Determiner);
+
 }
 
 export default grammarSaga;

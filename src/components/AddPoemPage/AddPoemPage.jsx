@@ -14,7 +14,10 @@ function AddPoemPage() {
     const preposition = useSelector((store) => store.randomPrepositionReducer);
     const helpingVerb = useSelector((store) => store.randomHelpingVerbReducer);
     const pronoun = useSelector((store) => store.randomPronounReducer);
+    const determiner = useSelector((store) => store.randomDeterminerReducer);
 
+
+    let [newPoem, setNewPoem] = useState([]);
 
     const getNoun = () => {
         dispatch({ type: 'FETCH_NOUN' });
@@ -48,6 +51,10 @@ function AddPoemPage() {
         dispatch({ type: 'FETCH_PRONOUN' });
     };
 
+    const getDeterminer = () => {
+        dispatch({ type: 'FETCH_DETERMINER' });
+    };
+
     return (
         <div>
             <button onClick={getNoun}>Get Noun</button>
@@ -66,6 +73,8 @@ function AddPoemPage() {
             <p>Helping Verb: {helpingVerb}</p>
             <button onClick={getPronoun}>Get Pronoun</button>
             <p>Pronoun: {pronoun}</p>
+            <button onClick={getDeterminer}>Get Determiner</button>
+            <p>Determiner: {determiner}</p>
         </div>
     );
 };
