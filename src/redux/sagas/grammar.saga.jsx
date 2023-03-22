@@ -4,8 +4,10 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* Noun() {
     try {
         const noun = yield axios.get('/random-noun');
+        const noun2 = yield axios.get('/random-noun');
         let newNoun = noun.data[Math.floor(Math.random() * noun.data.length)];
-        yield put({ type: 'SET_NOUN', payload: newNoun });
+        let newNoun2 = noun2.data[Math.floor(Math.random() * noun2.data.length)];
+        yield put({ type: 'SET_NOUN', payload: [newNoun, newNoun2] });
     } catch (error) {
         console.error('error in GET noun', error);
     }
@@ -14,8 +16,10 @@ function* Noun() {
 function* Verb() {
     try {
         const verb = yield axios.get('/random-verb');
+        const verb2 = yield axios.get('/random-verb');
         let newVerb = verb.data[Math.floor(Math.random() * verb.data.length)];
-        yield put({ type: 'SET_VERB', payload: newVerb });
+        let newVerb2 = verb2.data[Math.floor(Math.random() * verb2.data.length)];
+        yield put({ type: 'SET_VERB', payload: [newVerb, newVerb2] });
     } catch (error) {
         console.error('error in GET verb', error);
     }
@@ -24,8 +28,10 @@ function* Verb() {
 function* Adjective() {
     try {
         const adjective = yield axios.get('/random-adjective');
+        const adjective2 = yield axios.get('/random-adjective');
         let newAdjective = adjective.data[Math.floor(Math.random() * adjective.data.length)];
-        yield put({ type: 'SET_ADJECTIVE', payload: newAdjective });
+        let newAdjective2 = adjective2.data[Math.floor(Math.random() * adjective2.data.length)];
+        yield put({ type: 'SET_ADJECTIVE', payload: [newAdjective, newAdjective2] });
     } catch (error) {
         console.error('error in GET adjective', error);
     }
@@ -34,8 +40,10 @@ function* Adjective() {
 function* Adverb() {
     try {
         const adverb = yield axios.get('/random-adverb');
+        const adverb2 = yield axios.get('/random-adverb');
         let newAdverb = adverb.data[Math.floor(Math.random() * adverb.data.length)];
-        yield put({ type: 'SET_ADVERB', payload: newAdverb });
+        let newAdverb2 = adverb2.data[Math.floor(Math.random() * adverb2.data.length)];
+        yield put({ type: 'SET_ADVERB', payload: [newAdverb, newAdverb2] });
     } catch (error) {
         console.error('error in GET adverb', error);
     }
@@ -44,7 +52,8 @@ function* Adverb() {
 function* Conjunction() {
     try {
         const conjunction = yield axios.get('/random-conjunction');
-        yield put({ type: 'SET_CONJUNCTION', payload: conjunction.data });
+        const conjunction2 = yield axios.get('/random-conjunction');
+        yield put({ type: 'SET_CONJUNCTION', payload: [conjunction.data, conjunction2.data] });
     } catch (error) {
         console.error('error in GET conjunction', error);
     }
@@ -53,7 +62,8 @@ function* Conjunction() {
 function* Preposition() {
     try {
         const preposition = yield axios.get('/random-preposition');
-        yield put({ type: 'SET_PREPOSITION', payload: preposition.data });
+        const preposition2 = yield axios.get('/random-preposition');
+        yield put({ type: 'SET_PREPOSITION', payload: [preposition.data, preposition2.data] });
     } catch (error) {
         console.error('error in GET preposition', error);
     }
@@ -62,7 +72,8 @@ function* Preposition() {
 function* HelpingVerb() {
     try {
         const helping_verb = yield axios.get('/random-helping-verb');
-        yield put({ type: 'SET_HELPING_VERB', payload: helping_verb.data });
+        const helping_verb2 = yield axios.get('/random-helping-verb');
+        yield put({ type: 'SET_HELPING_VERB', payload: [helping_verb.data, helping_verb2.data] });
     } catch (error) {
         console.error('error in GET helping_verb', error);
     }
@@ -71,7 +82,8 @@ function* HelpingVerb() {
 function* Pronoun() {
     try {
         const pronoun = yield axios.get('/random-pronoun');
-        yield put({ type: 'SET_PRONOUN', payload: pronoun.data });
+        const pronoun2 = yield axios.get('/random-pronoun');
+        yield put({ type: 'SET_PRONOUN', payload: [pronoun.data, pronoun2.data] });
     } catch (error) {
         console.error('error in GET pronoun', error);
     }
@@ -80,7 +92,8 @@ function* Pronoun() {
 function* Determiner() {
     try {
         const determiner = yield axios.get('/random-determiner');
-        yield put({ type: 'SET_DETERMINER', payload: determiner.data });
+        const determiner2 = yield axios.get('/random-determiner');
+        yield put({ type: 'SET_DETERMINER', payload: [determiner.data, determiner2.data] });
     } catch (error) {
         console.error('error in GET determiner', error);
     }
@@ -96,7 +109,6 @@ function* grammarSaga() {
     yield takeLatest('FETCH_HELPING_VERB', HelpingVerb);
     yield takeLatest('FETCH_PRONOUN', Pronoun);
     yield takeLatest('FETCH_DETERMINER', Determiner);
-
 }
 
 export default grammarSaga;

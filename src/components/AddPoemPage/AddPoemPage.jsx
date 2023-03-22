@@ -62,44 +62,79 @@ function AddPoemPage() {
     let newPoem = [];
 
     const addNoun = () => {
-        newPoem.push(`${noun} `);
-        getNoun();
+        if (newPoem.includes(`${noun[0]}`)) {
+            newPoem.push(`${noun[1]}`);
+        } else {
+            newPoem.push(`${noun[0]}`);
+            getNoun();
+        }
     };
     const addVerb = () => {
-        newPoem.push(`${verb} `);
-        getVerb();
+        if (newPoem.includes(`${verb[0]}`)) {
+            newPoem.push(`${verb[1]}`);
+        } else {
+            newPoem.push(`${verb[0]}`);
+            getVerb();
+        };
     };
     const addAdjective = () => {
-        newPoem.push(`${adjective} `);
-        getAdjective();
+        if (newPoem.includes(`${adjective[0]}`)) {
+            newPoem.push(`${adjective[1]}`);
+        } else {
+            newPoem.push(`${adjective[0]}`);
+            getAdjective();
+        }
     };
     const addAdverb = () => {
-        newPoem.push(`${adverb} `);
-        getAdverb();
+        if (newPoem.includes(`${adverb[0]}`)) {
+            newPoem.push(`${adverb[1]}`);
+        } else {
+            newPoem.push(`${adverb[0]}`);
+            getAdverb();
+        }
     };
     const addConjunction = () => {
-        newPoem.push(`${conjunction} `);
-        getConjunction();
+        if (newPoem.includes(`${conjunction[0]}`)) {
+            newPoem.push(`${conjunction[1]}`);
+        } else {
+            newPoem.push(`${conjunction[0]}`);
+            getConjunction();
+        }
     };
     const addPreposition = () => {
-        newPoem.push(`${preposition} `);
-        getPreposition();
+        if (newPoem.includes(`${preposition[0]}`)) {
+            newPoem.push(`${preposition[1]}`);
+        } else {
+            newPoem.push(`${preposition[0]}`);
+            getPreposition();
+        }
     };
     const addHelpingVerb = () => {
-        newPoem.push(`${helpingVerb} `);
-        getHelpingVerb();
+        if (newPoem.includes(`${helpingVerb[0]}`)) {
+            newPoem.push(`${helpingVerb[1]}`);
+        } else {
+            newPoem.push(`${helpingVerb[0]}`);
+            getHelpingVerb();
+        }
     };
 
     const addPronoun = () => {
-        newPoem.push(`${pronoun} `);
-        getPronoun();
+        if (newPoem.includes(`${pronoun[0]}`)) {
+            newPoem.push(`${pronoun[1]}`);
+        } else {
+            newPoem.push(`${pronoun[0]}`);
+            getPronoun();
+        }
     };
 
     const addDeterminer = () => {
-        newPoem.push(`${determiner} `);
-        getDeterminer();
+        if (newPoem.includes(`${determiner[0]}`)) {
+            newPoem.push(`${determiner[1]}`);
+        } else {
+            newPoem.push(`${determiner[0]}`);
+            getDeterminer();
+        }
     };
-
 
     let structure = [];
 
@@ -108,48 +143,57 @@ function AddPoemPage() {
         if (structure.length === 0) {
             structure.push(Math.floor(Math.random() * 9) + 1);
             generate();
-        } else if (structure.length === 15) {
+        } else if (structure.length === 10) {
             translate(structure);
         } else if (structure[structure.length - 1] === 1) {
             let nextInt = [2, 3, 4, 6, 7];
-            structure.push(nextInt[Math.floor(Math.random() * nextInt.length)]);
+            let randInt = nextInt[Math.floor(Math.random() * nextInt.length)];
+            structure.push(randInt);
             generate();
         } else if (structure[structure.length - 1] === 2) {
             let nextInt = [1, 3, 4, 5, 6, 8, 9];
-            structure.push(nextInt[Math.floor(Math.random() * nextInt.length)]);
+            let randInt = nextInt[Math.floor(Math.random() * nextInt.length)];
+            structure.push(randInt);
             generate();
         } else if (structure[structure.length - 1] === 3) {
             let nextInt = [1, 2, 4, 5, 6, 8, 9];
-            structure.push(nextInt[Math.floor(Math.random() * nextInt.length)]);
+            let randInt = nextInt[Math.floor(Math.random() * nextInt.length)];
+            structure.push(randInt);
             generate();
         } else if (structure[structure.length - 1] === 4) {
             let nextInt = [1, 2, 3, 5, 6, 8, 9];
-            structure.push(nextInt[Math.floor(Math.random() * nextInt.length)]);
+            let randInt = nextInt[Math.floor(Math.random() * nextInt.length)];
+            structure.push(randInt);
             generate();
         } else if (structure[structure.length - 1] === 5) {
             let nextInt = [3, 4, 6, 8, 9];
-            structure.push(nextInt[Math.floor(Math.random() * nextInt.length)]);
+            let randInt = nextInt[Math.floor(Math.random() * nextInt.length)];
+            structure.push(randInt);
             generate();
         } else if (structure[structure.length - 1] === 6) {
             let nextInt = [1, 3, 4, 8, 9];
-            structure.push(nextInt[Math.floor(Math.random() * nextInt.length)]);
+            let randInt = nextInt[Math.floor(Math.random() * nextInt.length)];
+            structure.push(randInt);
             generate();
         } else if (structure[structure.length - 1] === 7) {
             let nextInt = [2, 4, 5, 8, 9];
-            structure.push(nextInt[Math.floor(Math.random() * nextInt.length)]);
+            let randInt = nextInt[Math.floor(Math.random() * nextInt.length)];
+            structure.push(randInt);
             generate();
         } else if (structure[structure.length - 1] === 8) {
             let nextInt = [1, 3, 4, 5, 6, 7];
-            structure.push(nextInt[Math.floor(Math.random() * nextInt.length)]);
+            let randInt = nextInt[Math.floor(Math.random() * nextInt.length)];
+            structure.push(randInt);
             generate();
         } else if (structure[structure.length - 1] === 9) {
             let nextInt = [1, 3, 4, 7];
-            structure.push(nextInt[Math.floor(Math.random() * nextInt.length)]);
+            let randInt = nextInt[Math.floor(Math.random() * nextInt.length)];
+            structure.push(randInt);
             generate();
         };
     };
 
-    function translate(numberPoem) {
+    const translate = (numberPoem) => {
         for (let int of numberPoem) {
             if (int === 1) {
                 addNoun();
@@ -195,7 +239,10 @@ function AddPoemPage() {
             <button onClick={getDeterminer}>Get Determiner</button>
             <p>Determiner: {determiner}</p>
             <button onClick={generate}>Get Sentence</button>
-            <p>Did it?: {newPoem}</p>
+            <p>Did it?:</p>
+            {newPoem.map((word, i) => (
+                { word }
+            ))}
         </div>
     );
 };
