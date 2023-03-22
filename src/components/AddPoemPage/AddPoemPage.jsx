@@ -18,7 +18,6 @@ function AddPoemPage() {
     const pronoun = useSelector((store) => store.randomPronounReducer);
     const determiner = useSelector((store) => store.randomDeterminerReducer);
 
-    let [newPoem, setNewPoem] = useState([]);
 
     const getNoun = () => {
         dispatch({ type: 'FETCH_NOUN' });
@@ -60,76 +59,119 @@ function AddPoemPage() {
         getDeterminer();
     }, []);
 
+    let newPoem = [];
+
     const addNoun = () => {
+        newPoem.push(`${noun} `);
         getNoun();
-        setNewPoem([...newPoem, `${noun} `]);
     };
     const addVerb = () => {
+        newPoem.push(`${verb} `);
         getVerb();
-        setNewPoem([...newPoem, `${verb} `]);
     };
     const addAdjective = () => {
+        newPoem.push(`${adjective} `);
         getAdjective();
-        setNewPoem([...newPoem, `${adjective} `]);
     };
     const addAdverb = () => {
+        newPoem.push(`${adverb} `);
         getAdverb();
-        setNewPoem([...newPoem, `${adverb} `]);
     };
     const addConjunction = () => {
+        newPoem.push(`${conjunction} `);
         getConjunction();
-        setNewPoem([...newPoem, `${conjunction} `]);
     };
     const addPreposition = () => {
+        newPoem.push(`${preposition} `);
         getPreposition();
-        setNewPoem([...newPoem, `${preposition} `]);
     };
     const addHelpingVerb = () => {
+        newPoem.push(`${helpingVerb} `);
         getHelpingVerb();
-        setNewPoem([...newPoem, `${helpingVerb} `]);
-    };
-    const addPronoun = () => {
-        getPronoun();
-        setNewPoem([...newPoem, `${pronoun} `]);
-    };
-    const addDeterminer = () => {
-        getDeterminer();
-        setNewPoem([...newPoem, `${determiner} `]);
     };
 
-    let [structure, setStructure] = useState([]);
+    const addPronoun = () => {
+        newPoem.push(`${pronoun} `);
+        getPronoun();
+    };
+
+    const addDeterminer = () => {
+        newPoem.push(`${determiner} `);
+        getDeterminer();
+    };
+
+
+    let structure = [];
 
     const generate = () => {
-        if (structure.length = 0) {
-            setStructure([...structure, Math.floor(Math.random() * 9) + 1]);
-        }
+        console.log(structure);
+        if (structure.length === 0) {
+            structure.push(Math.floor(Math.random() * 9) + 1);
+            generate();
+        } else if (structure.length === 15) {
+            translate(structure);
+        } else if (structure[structure.length - 1] === 1) {
+            let nextInt = [2, 3, 4, 6, 7];
+            structure.push(nextInt[Math.floor(Math.random() * nextInt.length)]);
+            generate();
+        } else if (structure[structure.length - 1] === 2) {
+            let nextInt = [1, 3, 4, 5, 6, 8, 9];
+            structure.push(nextInt[Math.floor(Math.random() * nextInt.length)]);
+            generate();
+        } else if (structure[structure.length - 1] === 3) {
+            let nextInt = [1, 2, 4, 5, 6, 8, 9];
+            structure.push(nextInt[Math.floor(Math.random() * nextInt.length)]);
+            generate();
+        } else if (structure[structure.length - 1] === 4) {
+            let nextInt = [1, 2, 3, 5, 6, 8, 9];
+            structure.push(nextInt[Math.floor(Math.random() * nextInt.length)]);
+            generate();
+        } else if (structure[structure.length - 1] === 5) {
+            let nextInt = [3, 4, 6, 8, 9];
+            structure.push(nextInt[Math.floor(Math.random() * nextInt.length)]);
+            generate();
+        } else if (structure[structure.length - 1] === 6) {
+            let nextInt = [1, 3, 4, 8, 9];
+            structure.push(nextInt[Math.floor(Math.random() * nextInt.length)]);
+            generate();
+        } else if (structure[structure.length - 1] === 7) {
+            let nextInt = [2, 4, 5, 8, 9];
+            structure.push(nextInt[Math.floor(Math.random() * nextInt.length)]);
+            generate();
+        } else if (structure[structure.length - 1] === 8) {
+            let nextInt = [1, 3, 4, 5, 6, 7];
+            structure.push(nextInt[Math.floor(Math.random() * nextInt.length)]);
+            generate();
+        } else if (structure[structure.length - 1] === 9) {
+            let nextInt = [1, 3, 4, 7];
+            structure.push(nextInt[Math.floor(Math.random() * nextInt.length)]);
+            generate();
+        };
     };
 
-    const translate = () => {
-        for (int of structure) {
-            if (int == 1) {
+    function translate(numberPoem) {
+        for (let int of numberPoem) {
+            if (int === 1) {
                 addNoun();
-            } else if (int == 2) {
+            } else if (int === 2) {
                 addVerb();
-            } else if (int == 3) {
+            } else if (int === 3) {
                 addAdjective();
-            } else if (int == 4) {
+            } else if (int === 4) {
                 addAdverb();
-            } else if (int == 5) {
+            } else if (int === 5) {
                 addConjunction();
-            } else if (int == 6) {
+            } else if (int === 6) {
                 addPreposition();
-            } else if (int == 7) {
+            } else if (int === 7) {
                 addHelpingVerb();
-            } else if (int == 8) {
+            } else if (int === 8) {
                 addPronoun();
-            } else if (int == 9) {
+            } else if (int === 9) {
                 addDeterminer();
             }
-            return (
-                newPoem
-            );
-        });
+        };
+        return console.log(newPoem);
     };
 
     return (
@@ -152,8 +194,8 @@ function AddPoemPage() {
             <p>Pronoun: {pronoun}</p>
             <button onClick={getDeterminer}>Get Determiner</button>
             <p>Determiner: {determiner}</p>
-            {/* <button onClick={newSentence}>Get Sentence</button>
-            <p>Did it?: {newPoem}</p> */}
+            <button onClick={generate}>Get Sentence</button>
+            <p>Did it?: {newPoem}</p>
         </div>
     );
 };
