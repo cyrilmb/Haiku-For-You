@@ -64,7 +64,6 @@ function EditForm({ newPoem }) {
                     defaultValue={word0 + word1 + word2}
                     onChange={(event) => setEditPoem({ ...editPoem, line_1: event.target.value })}
                 /> <br />
-                {console.log(editPoem)}
                 Line 2 <br />
                 <input
                     type='text'
