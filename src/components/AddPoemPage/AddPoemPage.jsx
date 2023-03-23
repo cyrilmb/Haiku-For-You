@@ -145,6 +145,7 @@ function AddPoemPage() {
             structure.push(Math.floor(Math.random() * 9) + 1);
             generate();
         } else if (structure.length === 10) {
+            console.log(structure);
             translate(structure);
         } else if (structure[structure.length - 1] === 1) {
             let nextInt = [2, 3, 4, 6, 7];
@@ -224,7 +225,7 @@ function AddPoemPage() {
 
     return (
         <div>
-            <button onClick={getNoun}>Get Noun</button>
+            {/* <button onClick={getNoun}>Get Noun</button>
             <p>Noun: {noun}</p>
             <button onClick={getVerb}>Get Verb</button>
             <p>Verb: {verb}</p>
@@ -241,12 +242,11 @@ function AddPoemPage() {
             <button onClick={getPronoun}>Get Pronoun</button>
             <p>Pronoun: {pronoun}</p>
             <button onClick={getDeterminer}>Get Determiner</button>
-            <p>Determiner: {determiner}</p>
-            <button onClick={generate}>Get Sentence</button>
-            <p>Did it?:</p>
-
+            <p>Determiner: {determiner}</p> */}
+            <button onClick={generate}>Make a Poem</button>
+            <p></p>
             {printPoem.map((word, i) => {
-                return (<p key={i}> {`${word}`} </p>);
+                return <PrintPoem key={i} word={word} />;
             })}
 
 
