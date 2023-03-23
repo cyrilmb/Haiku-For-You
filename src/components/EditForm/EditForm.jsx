@@ -23,19 +23,23 @@ function EditForm({ newPoem }) {
         line_3: newPoem.line_3
     });
 
-    console.log('newpoem', newPoem.line_1);
-    let word0 = newPoem.line_1[0];
-    let word1 = newPoem.line_1[1];
-    let word2 = newPoem.line_1[2];
-    console.log('words', word0, word1, word2);
-    let string1 = JSON.stringify(word0, word1, word2);
-    console.log('string', string1);
+    let word0 = `${newPoem.line_1[0]} `;
+    let word1 = `${newPoem.line_1[1]} `;
+    let word2 = `${newPoem.line_1[2]} `;
+    let word3 = `${newPoem.line_2[0]} `;
+    let word4 = `${newPoem.line_2[1]} `;
+    let word5 = `${newPoem.line_2[2]} `;
+    let word6 = `${newPoem.line_2[3]} `;
+    let word7 = `${newPoem.line_3[0]} `;
+    let word8 = `${newPoem.line_3[1]} `;
+    let word9 = `${newPoem.line_3[2]} `;
+
     //Dispatch input values to be stored in db
     const addEdit = (event) => {
         event.preventDefault();
         dispatch({
             type: 'ADD_POEM',
-            payload: newPoem
+            payload: editPoem
         });
         dispatch({
             type: 'FETCH_USER_GALLERY',
@@ -51,25 +55,26 @@ function EditForm({ newPoem }) {
                 <input
                     type='text'
                     placeholder='Add your own title!'
-                    value={newPoem.title}
-                    onChange={(e) => handleChange(e, 'title')}
+                    // value={event.target.value}
+                    onChange={(event) => setEditPoem({ ...editPoem, title: event.target.value })}
                 /> <br />
                 Line 1 <br />
                 <input
                     type='text'
-                    defaultValue={{ word0, word1, word2 }}
+                    defaultValue={word0 + word1 + word2}
                     onChange={(event) => setEditPoem({ ...editPoem, line_1: event.target.value })}
                 /> <br />
+                {console.log(editPoem)}
                 Line 2 <br />
                 <input
                     type='text'
-                    defaultValue={newPoem.line_2}
+                    defaultValue={word3 + word4 + word5 + word6}
                     onChange={(event) => setEditPoem({ ...editPoem, line_2: event.target.value })}
                 /> <br />
                 Line 3 <br />
                 <input
                     type='text'
-                    defaultValue={newPoem.line_3}
+                    defaultValue={word7 + word8 + word9}
                     onChange={(event) => setEditPoem({ ...editPoem, line_3: event.target.value })}
                 /> <br />
                 <input type="submit" value="Submit Your Poem" />
