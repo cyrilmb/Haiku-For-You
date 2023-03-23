@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
+
+import PrintPoem from './PrintPoem';
 
 function AddPoemPage() {
     //Hooks
@@ -69,6 +70,7 @@ function AddPoemPage() {
             getNoun();
         }
     };
+
     const addVerb = () => {
         if (newPoem.includes(`${verb[0]}`)) {
             newPoem.push(`${verb[1]}`);
@@ -139,7 +141,6 @@ function AddPoemPage() {
     let structure = [];
 
     const generate = () => {
-        console.log(structure);
         if (structure.length === 0) {
             structure.push(Math.floor(Math.random() * 9) + 1);
             generate();
@@ -193,6 +194,8 @@ function AddPoemPage() {
         };
     };
 
+    const [printPoem, setPrintPoem] = useState([]);
+
     const translate = (numberPoem) => {
         for (let int of numberPoem) {
             if (int === 1) {
@@ -214,8 +217,9 @@ function AddPoemPage() {
             } else if (int === 9) {
                 addDeterminer();
             }
+
         };
-        return console.log(newPoem);
+        setPrintPoem([newPoem]);
     };
 
     return (
@@ -240,9 +244,12 @@ function AddPoemPage() {
             <p>Determiner: {determiner}</p>
             <button onClick={generate}>Get Sentence</button>
             <p>Did it?:</p>
-            {newPoem.map((word, i) => (
-                { word }
-            ))}
+
+            {printPoem.map((word, i) => {
+                return (<p key={i}> {`${word}`} </p>);
+            })}
+
+
         </div>
     );
 };
