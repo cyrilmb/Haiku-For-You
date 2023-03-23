@@ -5,12 +5,19 @@ import axios from 'axios';
 
 function PrintPoem({ word }) {
 
+    const history = useHistory();
+
     const handleEditClick = () => {
-        let poemToEdit = {
+        let newPoem = {
             line_1: [word[0], word[1], word[2]],
             line_2: [word[3], word[4], word[5], word[6]],
             line_3: [word[7], word[8], word[9]]
         };
+
+        history.push({
+            pathname: '/edit',
+            state: { detail: newPoem }
+        });
     };
     return (
         <div>

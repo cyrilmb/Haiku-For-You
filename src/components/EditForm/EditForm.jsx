@@ -1,56 +1,76 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation, useHistory } from 'react-router-dom';
 
-function EditForm() {
+function EditForm({ newPoem }) {
 
     //Hooks
     const dispatch = useDispatch();
-    let [newPoem, setNewPoem] = useState({ title: '', line_1: '', line_2: '', line_3: '' });
+    const location = useLocation();
+    const history = useHistory();
 
-    //Handle changes to inputs in form
-    const handleChange = (event, key) => {
-        setNewPoem({ ...newPoem, [key]: event.target.value });
-    };
+    //Props from PrintPoem through useHistory
+    newPoem = location.state.detail;
 
+    //Reducer for user info, need userID
+    const user = useSelector((store) => store.user);
+
+    //track inline edits to state
+    const [editPoem, setEditPoem] = useState({
+        title: newPoem.title,
+        line_1: newPoem.line_1,
+        line_2: newPoem.line_2,
+        line_3: newPoem.line_3
+    });
+
+    console.log('newpoem', newPoem.line_1);
+    let word0 = newPoem.line_1[0];
+    let word1 = newPoem.line_1[1];
+    let word2 = newPoem.line_1[2];
+    console.log('words', word0, word1, word2);
+    let string1 = JSON.stringify(word0, word1, word2);
+    console.log('string', string1);
     //Dispatch input values to be stored in db
-    const addNewPoem = (event) => {
+    const addEdit = (event) => {
         event.preventDefault();
         dispatch({
             type: 'ADD_POEM',
             payload: newPoem
         });
+        dispatch({
+            type: 'FETCH_USER_GALLERY',
+            payload: user.id
+        });
+        history.push({ pathname: '/user-gallery' });
     };
 
     return (
         <div>
-            <form onSubmit={addNewPoem}>
+            <form onSubmit={addEdit}>
                 Title <br />
                 <input
                     type='text'
-                    placeholder='title'
+                    placeholder='Add your own title!'
                     value={newPoem.title}
                     onChange={(e) => handleChange(e, 'title')}
                 /> <br />
                 Line 1 <br />
                 <input
                     type='text'
-                    placeholder='line 1'
-                    value={newPoem.line_1}
-                    onChange={(e) => handleChange(e, 'line_1')}
+                    defaultValue={{ word0, word1, word2 }}
+                    onChange={(event) => setEditPoem({ ...editPoem, line_1: event.target.value })}
                 /> <br />
                 Line 2 <br />
                 <input
                     type='text'
-                    placeholder='line 2'
-                    value={newPoem.line_2}
-                    onChange={(e) => handleChange(e, 'line_2')}
+                    defaultValue={newPoem.line_2}
+                    onChange={(event) => setEditPoem({ ...editPoem, line_2: event.target.value })}
                 /> <br />
                 Line 3 <br />
                 <input
                     type='text'
-                    placeholder='line 3'
-                    value={newPoem.line_3}
-                    onChange={(e) => handleChange(e, 'line_3')}
+                    defaultValue={newPoem.line_3}
+                    onChange={(event) => setEditPoem({ ...editPoem, line_3: event.target.value })}
                 /> <br />
                 <input type="submit" value="Submit Your Poem" />
             </form>

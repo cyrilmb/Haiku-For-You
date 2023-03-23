@@ -9,11 +9,19 @@ function EditUserPoem({ poem }) {
     const location = useLocation();
     const history = useHistory();
 
+    //Props from PrintPoem through useHistory
     poem = location.state.detail;
+
+    //Reducer for user info, need userID
     const user = useSelector((store) => store.user);
 
-
-    let [editPoem, setEditPoem] = useState({ title: poem.title, line_1: poem.line_1, line_2: poem.line_2, line_3: poem.line_3, id: poem.id });
+    const [editPoem, setEditPoem] = useState({
+        title: poem.title,
+        line_1: poem.line_1,
+        line_2: poem.line_2,
+        line_3: poem.line_3,
+        id: poem.id
+    });
 
     //Dispatch input values to be stored in db
     const addEdit = (event) => {
