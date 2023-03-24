@@ -24,7 +24,7 @@ function PrintPoem({ word }) {
     const handleDefinition = (word) => {
         console.log(word);
         dispatch({
-            type: 'GET_DEFINITION',
+            type: 'FETCH_DEFINITION',
             payload: word
         });
     };
