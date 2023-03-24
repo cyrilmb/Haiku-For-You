@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
     .request(options)
     .then((response) => {
       let resp = response.data;
-      console.log(resp);
+      // console.log(resp);
       res.send(resp.results.data);
     })
     .catch((error) => {

@@ -9,6 +9,7 @@ function PrintPoem({ word }) {
     const dispatch = useDispatch();
 
     const definition = useSelector((store) => store.definitionReducer);
+    console.log('definition reducer', definition);
 
     const handleEditClick = () => {
         let newPoem = {
@@ -27,28 +28,28 @@ function PrintPoem({ word }) {
         console.log(word);
         dispatch({
             type: 'FETCH_DEFINITION',
-            payload: word
-        })
-            .then(console.log(definition));
+            payload: { word }
+        });
+        // (console.log('definition logging in handleDef:', definition));
     };
 
     return (
         <div>
             <div>
                 <span onClick={() => handleDefinition(word[0])}>{`${word[0]} `}</span>
-                <span>{`${word[1]} `}</span>
-                <span>{`${word[2]} `}</span>
+                <span onClick={() => handleDefinition(word[1])}>{`${word[1]} `}</span>
+                <span onClick={() => handleDefinition(word[2])}>{`${word[2]} `}</span>
             </div>
             <div>
-                <span>{`${word[3]} `}</span>
-                <span>{`${word[4]} `}</span>
-                <span>{`${word[5]} `}</span>
-                <span>{`${word[6]} `}</span>
+                <span onClick={() => handleDefinition(word[3])}>{`${word[3]} `}</span>
+                <span onClick={() => handleDefinition(word[4])}>{`${word[4]} `}</span>
+                <span onClick={() => handleDefinition(word[5])}>{`${word[5]} `}</span>
+                <span onClick={() => handleDefinition(word[6])}>{`${word[6]} `}</span>
             </div>
             <div>
-                <span>{`${word[7]} `}</span>
-                <span>{`${word[8]} `}</span>
-                <span>{`${word[9]} `}</span>
+                <span onClick={() => handleDefinition(word[7])}>{`${word[7]} `}</span>
+                <span onClick={() => handleDefinition(word[8])}>{`${word[8]} `}</span>
+                <span onClick={() => handleDefinition(word[9])}>{`${word[9]} `}</span>
             </div>
             <button onClick={handleEditClick}>Edit Your Poem</button>
         </div>

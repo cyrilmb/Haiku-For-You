@@ -55,7 +55,6 @@ function EditForm({ newPoem }) {
                 <input
                     type='text'
                     placeholder='Add your own title!'
-                    // value={event.target.value}
                     onChange={(event) => setEditPoem({ ...editPoem, title: event.target.value })}
                 /> <br />
                 Line 1 <br />
