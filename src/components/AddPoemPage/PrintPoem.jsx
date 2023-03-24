@@ -6,6 +6,7 @@ import axios from 'axios';
 function PrintPoem({ word }) {
 
     const history = useHistory();
+    const dispatch = useDispatch();
 
     const handleEditClick = () => {
         let newPoem = {
@@ -19,10 +20,19 @@ function PrintPoem({ word }) {
             state: { detail: newPoem }
         });
     };
+
+    const handleDefinition = (word) => {
+        console.log(word);
+        dispatch({
+            type: 'GET_DEFINITION',
+            payload: word
+        });
+    };
+
     return (
         <div>
             <div>
-                <span>{`${word[0]} `}</span>
+                <span onClick={() => handleDefinition(word[0])}>{`${word[0]} `}</span>
                 <span>{`${word[1]} `}</span>
                 <span>{`${word[2]} `}</span>
             </div>
