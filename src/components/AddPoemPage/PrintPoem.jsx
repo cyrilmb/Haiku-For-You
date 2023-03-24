@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
+import swal from 'sweetalert';
+
 
 function PrintPoem({ word }) {
 
@@ -30,7 +31,11 @@ function PrintPoem({ word }) {
             type: 'FETCH_DEFINITION',
             payload: { word }
         });
-        // (console.log('definition logging in handleDef:', definition));
+        showDefinition(definition);
+    };
+
+    const showDefinition = (definition) => {
+
     };
 
     return (
