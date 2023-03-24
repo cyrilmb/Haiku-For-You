@@ -8,6 +8,8 @@ function PrintPoem({ word }) {
     const history = useHistory();
     const dispatch = useDispatch();
 
+    const definition = useSelector((store) => store.definitionReducer);
+
     const handleEditClick = () => {
         let newPoem = {
             line_1: [word[0], word[1], word[2]],
@@ -26,7 +28,8 @@ function PrintPoem({ word }) {
         dispatch({
             type: 'FETCH_DEFINITION',
             payload: word
-        });
+        })
+            .then(console.log(definition));
     };
 
     return (

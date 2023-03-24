@@ -24,6 +24,7 @@ const randomPrepositionRouter = require('./routes/preposition.router');
 const randomHelpingVerbRouter = require('./routes/helpingVerb.router');
 const randomPronounRouter = require('./routes/pronoun.router');
 const randomDeterminerRouter = require('./routes/determiner.router');
+const definitionRouter = require('./routes/definition.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -53,6 +54,7 @@ app.use('/random-preposition', randomPrepositionRouter);
 app.use('/random-helping-verb', randomHelpingVerbRouter);
 app.use('/random-pronoun', randomPronounRouter);
 app.use('/random-determiner', randomDeterminerRouter);
+app.use('/definition', definitionRouter);
 
 // Serve static files
 app.use(express.static('build'));
