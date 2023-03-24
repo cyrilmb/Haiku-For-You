@@ -23,6 +23,7 @@ import HomePoem from '../HomePoem/HomePoem.jsx';
 import UserPoems from '../UserPoems/UserPoems.jsx';
 import EditUserPoem from '../EditUserPoem/EditUserPoem';
 import AddPoemPage from '../AddPoemPage/AddPoemPage';
+import Header from '../Header/Header';
 
 import './App.css';
 
@@ -38,7 +39,8 @@ function App() {
   return (
     <Router>
       <div>
-        <Nav />
+        <Header />
+        {/* <Nav /> */}
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/gallery */}
           <Redirect exact from="/" to="/home" />

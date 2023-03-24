@@ -3,3 +3,20 @@ footer {
   padding: 20px;
   text-align: center;
 }
+
+.footer-box {
+  position: fixed;
+  bottom: 0;
+  /* padding: 20px, 20px, 0px, 20px,; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  display: inline-block;
+  color: #910294;
+  background-color: #eec669;
+  text-align: center;
+  /* padding: 24px 10px; */
+  text-decoration: none;
+  font-size: 15px;
+}
