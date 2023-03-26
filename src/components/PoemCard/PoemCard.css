@@ -1,0 +1,21 @@
+.all-poem {
+    margin: 0px, 10px, 5px, 10px;
+    
+}
+
+.title {
+    font-family: 'Montserrat', sans-serif;
+  /* font-family: 'Rubik', sans-serif; */
+
+}
+
+.poem-line, .author-line {
+    font-family: 'Proza Libre', sans-serif;
+    /* font-family: 'Quattrocento Sans', sans-serif; */
+    font-size: 17px;
+    margin: 3px, 3px, 3px, 3px;
+}
+
+.author-line {
+    text-align: right;
+}

@@ -3,7 +3,6 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 function* getDefinition(action) {
     try {
-        console.log('action.payload saga', action.payload);
         const definition = yield axios.post('/definition', action.payload);
         yield put({ type: 'SET_DEFINITION', payload: definition.data });
     } catch (error) {

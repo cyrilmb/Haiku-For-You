@@ -243,6 +243,8 @@ function AddPoemPage() {
             <p>Pronoun: {pronoun}</p>
             <button onClick={getDeterminer}>Get Determiner</button>
             <p>Determiner: {determiner}</p> */}
+            <h3>Click to generate a poem</h3>
+
             <button onClick={generate}>Make a Poem</button>
             <p></p>
             {printPoem.map((word, i) => {

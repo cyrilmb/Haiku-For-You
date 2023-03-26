@@ -9,8 +9,7 @@ function PrintPoem({ word }) {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const definition = useSelector((store) => store.definitionReducer);
-    console.log('definition reducer', definition);
+    const definitionArr = useSelector((store) => store.definitionReducer);
 
     const handleEditClick = () => {
         let newPoem = {
@@ -25,18 +24,31 @@ function PrintPoem({ word }) {
         });
     };
 
-    const handleDefinition = (word) => {
-        console.log(word);
-        dispatch({
+    const handleDefinition = async (word) => {
+        await dispatch({
             type: 'FETCH_DEFINITION',
             payload: { word }
         });
-        showDefinition(definition);
+        // await showDefinition(definition);
+        console.log(definitionArr);
+        // let definition = JSON.stringify(definitionArr.definitions[0].definition);
+
+        for await (let def of definitionArr.definitions) {
+            let newDef = JSON.stringify(def.definition);
+            // let newDefArr = [];
+            // newDefArr.push(newDef);
+            console.log(newDef);
+        };
+
+        // await alert(
+
+        // );
+
     };
 
-    const showDefinition = (definition) => {
-
-    };
+    // const showDefinition = (definition) => {
+    //     alert(definition.definitions);
+    // };
 
     return (
         <div>

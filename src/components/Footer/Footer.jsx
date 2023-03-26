@@ -13,7 +13,9 @@ function Footer() {
 
   return (
     <div>
-      <footer>&copy; Cyril Malle-Barlow</footer>
+      <div className='copyRight'>
+        <footer>&copy; Cyril Malle-Barlow</footer>
+      </div>
       <div className='footer-box'>
         {/* If a user is logged in, show these links */}
         {user.id && (

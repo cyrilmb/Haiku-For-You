@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import './GalleryPage.css';
 
 import PoemCard from '../PoemCard/PoemCard';
 
@@ -15,7 +16,7 @@ function GalleryPage() {
 
     return (
         <div>
-            <h3>GALLERY</h3>
+            <h3 className='pageTitle'>Public Gallery</h3>
             {gallery.map((line, i) => {
                 return (
                     <PoemCard line={line} key={i} />

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 function EditForm({ newPoem }) {
 
@@ -14,6 +15,9 @@ function EditForm({ newPoem }) {
 
     //Reducer for user info, need userID
     const user = useSelector((store) => store.user);
+
+    //Reducer to Get a random word
+    const random = useSelector((store) => store.randomWordReducer);
 
     //track inline edits to state
     const [editPoem, setEditPoem] = useState({
@@ -35,19 +39,40 @@ function EditForm({ newPoem }) {
     let word9 = `${newPoem.line_3[2]} `;
 
     //Dispatch input values to be stored in db
-    const addEdit = (event) => {
+    const addEdit = async (event) => {
         event.preventDefault();
-        dispatch({
+        await dispatch({
             type: 'ADD_POEM',
             payload: editPoem
         });
-        dispatch({
+
+        await dispatch({
             type: 'FETCH_USER_GALLERY',
             payload: user.id
         });
+
         history.push({ pathname: '/user-gallery' });
     };
 
+    //TODO :: Make Saga for this GET !!
+    const randomWord = () => {
+        axios.get('/random-word')
+            .then((response) => {
+                if (response.data.results) {
+                    if (response.data.results[0].definition && response.data.results[0].partOfSpeech) {
+                        dispatch({
+                            type: 'SET_RANDOM',
+                            payload: response.data
+                        });
+                    } else { randomWord(); }
+                } else { randomWord(); }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
+    console.log(`${newPoem.line_1}`);
+    console.log(JSON.stringify(newPoem.line_1).length);
     return (
         <div>
             <form onSubmit={addEdit}>
@@ -62,21 +87,32 @@ function EditForm({ newPoem }) {
                     type='text'
                     defaultValue={word0 + word1 + word2}
                     onChange={(event) => setEditPoem({ ...editPoem, line_1: event.target.value })}
+                    // this is not working great, also does not listen for change, which would be nice
+                    style={{ width: `${JSON.stringify(newPoem.line_1).length - 9}ch` }}
                 /> <br />
                 Line 2 <br />
                 <input
                     type='text'
                     defaultValue={word3 + word4 + word5 + word6}
                     onChange={(event) => setEditPoem({ ...editPoem, line_2: event.target.value })}
+                    // this is not working great, also does not listen for change, which would be nice
+                    style={{ width: `${JSON.stringify(newPoem.line_2).length - 11}ch` }}
                 /> <br />
                 Line 3 <br />
                 <input
                     type='text'
                     defaultValue={word7 + word8 + word9}
                     onChange={(event) => setEditPoem({ ...editPoem, line_3: event.target.value })}
+                    // this is not working great, also does not listen for change, which would be nice
+                    style={{ width: `${JSON.stringify(newPoem.line_3).length - 9}ch` }}
                 /> <br />
                 <input type="submit" value="Submit Your Poem" />
             </form>
+            <p>Need some inspiration? Click here to get a random word!</p>
+            <button onClick={randomWord}>Get a Word</button>
+            <p>Result: {random.word}</p>
+            <p>Definition: {random.results?.[0].definition}</p>
+            <p>Part  of Speech: {random.results?.[0].partOfSpeech}</p>
         </div>
     );
 }

@@ -17,11 +17,12 @@
   }
   
   .nav-title {
-    font-size: 24px;
+    font-size: 32px;
     font-weight: 700;
     color: #910294;
     padding-left: 10px;
     margin: 0;
+    font-family: 'Rubik', sans-serif;
   }
   
   .navLink {

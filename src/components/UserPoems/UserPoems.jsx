@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-
+import './UserPoems.css';
 import PoemCard from '../PoemCard/PoemCard';
 
 function UserPoems() {
@@ -18,15 +18,16 @@ function UserPoems() {
         });
     }, []);
 
-    const handleDelete = (id) => {
-        dispatch({
+    const handleDelete = async (id) => {
+        await dispatch({
             type: 'DELETE_POEM',
             payload: id
         });
-        dispatch({
+        await dispatch({
             type: 'FETCH_USER_GALLERY',
             payload: user.id
         });
+        history.push('/user-gallery');
     };
 
     const handleEdit = (poem) => {
@@ -39,7 +40,7 @@ function UserPoems() {
 
     return (
         <div>
-            <h3>GALLERY</h3>
+            <h3 className='pageTitle'>Private Gallery</h3>
             {gallery.map((line, i) => {
                 return (
                     <div key={i}>
