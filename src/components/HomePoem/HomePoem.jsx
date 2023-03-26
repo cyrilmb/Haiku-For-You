@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import './HomePoem.css';
 
 import PoemCard from '../PoemCard/PoemCard';
 
@@ -17,13 +18,15 @@ function HomePoem() {
 
 
     return (
-        <div>
+        <div className='home-poem'>
             {poem.map((line, i) => {
                 return (
                     <PoemCard line={line} key={i} />
                 );
             })}
-            <button onClick={() => dispatch({ type: 'FETCH_POEM' })}>Get New Poem</button>
+            <div className='home-button'>
+                <button onClick={() => dispatch({ type: 'FETCH_POEM' })}>Get New Poem</button>
+            </div>
         </div >
     );
 }
