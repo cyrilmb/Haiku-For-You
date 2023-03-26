@@ -4,7 +4,7 @@
     justify-content: space-between;
     align-items: center;
   
-    margin: 0 0 30px;
+    margin: 0 0 10px;
     background-color: #eec669;
     overflow: hidden;
     width: 100%;
@@ -22,7 +22,8 @@
     color: #910294;
     padding-left: 10px;
     margin: 0;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Righteous', cursive;
+    /* font-family: 'Rubik', sans-serif; */
     /* font-family: 'Montserrat', sans-serif; */
   }
   

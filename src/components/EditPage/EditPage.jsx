@@ -10,7 +10,7 @@ import EditForm from '../EditForm/EditForm.jsx';
 function EditPage() {
   return (
     <div className="container">
-      <p>Edit Page</p>
+      {/* <p>Edit Page</p> */}
       <EditForm />
     </div>
   );

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import swal from 'sweetalert';
+import './PrintPoem.css';
 
 
 function PrintPoem({ word }) {
@@ -52,22 +52,23 @@ function PrintPoem({ word }) {
 
     return (
         <div>
-            <div>
+            <div className='poem-line'>
                 <span onClick={() => handleDefinition(word[0])}>{`${word[0]} `}</span>
                 <span onClick={() => handleDefinition(word[1])}>{`${word[1]} `}</span>
                 <span onClick={() => handleDefinition(word[2])}>{`${word[2]} `}</span>
             </div>
-            <div>
+            <div className='poem-line'>
                 <span onClick={() => handleDefinition(word[3])}>{`${word[3]} `}</span>
                 <span onClick={() => handleDefinition(word[4])}>{`${word[4]} `}</span>
                 <span onClick={() => handleDefinition(word[5])}>{`${word[5]} `}</span>
                 <span onClick={() => handleDefinition(word[6])}>{`${word[6]} `}</span>
             </div>
-            <div>
+            <div className='poem-line'>
                 <span onClick={() => handleDefinition(word[7])}>{`${word[7]} `}</span>
                 <span onClick={() => handleDefinition(word[8])}>{`${word[8]} `}</span>
                 <span onClick={() => handleDefinition(word[9])}>{`${word[9]} `}</span>
             </div>
+            <p></p>
             <button onClick={handleEditClick}>Edit Your Poem</button>
         </div>
     );

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useHistory } from 'react-router-dom';
 import axios from 'axios';
+import './EditForm.css';
 
 function EditForm({ newPoem }) {
 
@@ -71,10 +72,11 @@ function EditForm({ newPoem }) {
                 console.error(error);
             });
     };
-    console.log(`${newPoem.line_1}`);
-    console.log(JSON.stringify(newPoem.line_1).length);
+    // console.log(`${newPoem.line_1}`);
+    // console.log(JSON.stringify(newPoem.line_1).length);
     return (
         <div>
+            <h3 className='pageTitle'>Edit Form</h3>
             <form onSubmit={addEdit}>
                 Title <br />
                 <input
@@ -108,7 +110,8 @@ function EditForm({ newPoem }) {
                 /> <br />
                 <input type="submit" value="Submit Your Poem" />
             </form>
-            <p>Need some inspiration? Click here to get a random word!</p>
+            <p>Need some inspiration? </p>
+            <p>Click here to get a random word!</p>
             <button onClick={randomWord}>Get a Word</button>
             <p>Result: {random.word}</p>
             <p>Definition: {random.results?.[0].definition}</p>
