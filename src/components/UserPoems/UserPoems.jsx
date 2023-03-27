@@ -19,15 +19,19 @@ function UserPoems() {
     }, []);
 
     const handleDelete = async (id) => {
-        await dispatch({
-            type: 'DELETE_POEM',
-            payload: id
-        });
-        await dispatch({
-            type: 'FETCH_USER_GALLERY',
-            payload: user.id
-        });
-        history.push('/user-gallery');
+        if (confirm('Are you sure you want to delete?')) {
+            await dispatch({
+                type: 'DELETE_POEM',
+                payload: id
+            });
+            await dispatch({
+                type: 'FETCH_USER_GALLERY',
+                payload: user.id
+            });
+            history.push('/user-gallery');
+        } else {
+            history.push('/user-gallery');
+        }
     };
 
     const handleEdit = (poem) => {
