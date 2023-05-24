@@ -16,6 +16,8 @@ function EditForm({ newPoem }) {
     //Props from PrintPoem through useHistory
     newPoem = location.state.detail;
 
+    console.log(newPoem);
+
     //Reducer for user info, need userID
     const user = useSelector((store) => store.user);
 

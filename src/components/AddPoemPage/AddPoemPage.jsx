@@ -145,7 +145,7 @@ function AddPoemPage() {
             structure.push(Math.floor(Math.random() * 9) + 1);
             generate();
         } else if (structure.length === 10) {
-            console.log(structure);
+            // console.log(structure);
             translate(structure);
         } else if (structure[structure.length - 1] === 1) {
             let nextInt = [2, 3, 4, 6, 7];

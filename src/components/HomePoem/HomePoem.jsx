@@ -10,6 +10,7 @@ function HomePoem() {
     //Hooks here
     const dispatch = useDispatch();
     const poem = useSelector((store) => store.homePoemReducer);
+    console.log(poem);
 
     //Render random poem on load
     useEffect(() => {

@@ -25,7 +25,7 @@ function PrintPoem({ word }) {
     };
 
     const handleDefinition = async (word) => {
-        await dispatch({
+        dispatch({
             type: 'FETCH_DEFINITION',
             payload: { word }
         });
