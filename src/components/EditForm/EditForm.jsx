@@ -24,14 +24,6 @@ function EditForm({ newPoem }) {
     //Reducer to Get a random word
     const random = useSelector((store) => store.randomWordReducer);
 
-    //track inline edits to state
-    const [editPoem, setEditPoem] = useState({
-        title: newPoem.title,
-        line_1: newPoem.line_1,
-        line_2: newPoem.line_2,
-        line_3: newPoem.line_3
-    });
-
     let word0 = `${newPoem.line_1[0]} `;
     let word1 = `${newPoem.line_1[1]} `;
     let word2 = `${newPoem.line_1[2]} `;
@@ -42,6 +34,17 @@ function EditForm({ newPoem }) {
     let word7 = `${newPoem.line_3[0]} `;
     let word8 = `${newPoem.line_3[1]} `;
     let word9 = `${newPoem.line_3[2]} `;
+
+    console.log(word0, newPoem.line_1[0]);
+
+    //track inline edits to state
+    const [editPoem, setEditPoem] = useState({
+        title: 'Untitled',
+        line_1: `${word0}${word1}${word2}`,
+        line_2: `${word3}${word4}${word5}${word6}`,
+        line_3: `${word7}${word8}${word9}`
+    });
+    console.log(editPoem);
 
     //Dispatch input values to be stored in db
     const addEdit = async (event) => {
@@ -91,7 +94,7 @@ function EditForm({ newPoem }) {
                 Line 1 <br />
                 <input
                     type='text'
-                    defaultValue={word0 + word1 + word2}
+                    defaultValue={`${word0 + word1 + word2}`}
                     onChange={(event) => setEditPoem({ ...editPoem, line_1: event.target.value })}
                     // this is not working great, also does not listen for change, which would be nice
                     style={{ width: `${JSON.stringify(newPoem.line_1).length - 9}ch` }}
