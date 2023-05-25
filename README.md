@@ -2,7 +2,7 @@
 
 ## Description
 
-Haiku-For-You removes the stress of authorship from the creative process by generating a random haiku which users can edit and publish in a public gallery. The generated poem does not adhere to the strict syllable format of haiku (fun over form here), but tries to follow the short-long-short, three line structure. Poetry can be fun and daring, [take the plunge!](https://arcane-depths-36312.herokuapp.com/)
+Haiku-For-You removes the stress of authorship from the creative process by generating a random haiku which users can edit and publish in a public gallery. The generated poem does not adhere to the strict syllable format of haiku (fun over form here), but tries to follow the short-long-short, three line structure. Poetry can be fun and daring, [take the plunge!](https://haiku-for-you.herokuapp.com/)
 
 ## Preview
 
