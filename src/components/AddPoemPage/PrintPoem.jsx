@@ -58,12 +58,18 @@ function PrintPoem({ word }) {
                 <span onClick={() => handleDefinition(word[8])}>{`${word[8]} `}</span>
                 <span onClick={() => handleDefinition(word[9])}>{`${word[9]} `}</span>
             </div>
-            <p></p>
             <button onClick={handleEditClick}>Edit Your Poem</button>
 
-            {definitionObj?.definitions ?
-                <p>Defintion: {definitionObj?.definitions[0]?.definition}</p> : {}
-            }
+            {/* 
+            {definitionObj?.definitions?.map((def, i) => {
+                return (
+                    <p key={i}> definitions: {def} </p>
+                );
+            })} */}
+
+            {definitionArr ? <p>def: {definitionArr[0].definition}</p> : <p></p>}
+
+
         </div>
     );
 }
