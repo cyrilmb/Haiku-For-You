@@ -5,7 +5,6 @@ const axios = require('axios');
 
 router.post('/', async (req, res) => {
   try {
-    console.log('REQ.BODAAYY', req.body.word);
     const options = {
       method: 'GET',
       url: `https://wordsapiv1.p.rapidapi.com/words/${req.body.word}/definitions`,
@@ -23,7 +22,6 @@ router.post('/', async (req, res) => {
     // }
 
     await axios.request(options).then((response) => {
-      console.log(response.data);
       res.send(response.data);
     });
   } catch (error) {

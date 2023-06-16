@@ -9,9 +9,8 @@ function PrintPoem({ word }) {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const definitionObj = useSelector((store) => store.definitionReducer);
+    const definitionObj = useSelector((store) => store?.definitionReducer);
     const definitionArr = definitionObj?.definitions;
-    console.log('global defArr', definitionArr);
 
     const handleEditClick = () => {
         let newPoem = {
@@ -26,16 +25,13 @@ function PrintPoem({ word }) {
         });
     };
 
-    const [newDefArr, setNewDefArr] = useState([]);
-
+    let defRequestExists = false;
     const handleDefinition = async (word) => {
-        setNewDefArr([]);
+        defRequestExists = true;
         dispatch({
             type: 'FETCH_DEFINITION',
             payload: { word }
         });
-        setNewDefArr(definitionArr);
-        console.log(newDefArr);
     };
 
 
@@ -67,7 +63,19 @@ function PrintPoem({ word }) {
                 );
             })} */}
 
-            {definitionArr ? <p>def: {definitionArr[0].definition}</p> : <p></p>}
+            {defRequestExists ?
+                <>
+                    <p>Definitions:</p>
+
+                    {definitionArr?.map((def, i) => {
+                        return (
+                            <ul key={i}><li>{def.definition}</li></ul>
+                        );
+                    })}
+                </>
+
+                : <></>
+            }
 
 
         </div>
