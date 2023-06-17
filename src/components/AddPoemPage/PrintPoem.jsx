@@ -26,6 +26,7 @@ function PrintPoem({ word }) {
     };
 
     let defRequestExists = false;
+
     const handleDefinition = async (word) => {
         defRequestExists = true;
         dispatch({
@@ -73,11 +74,8 @@ function PrintPoem({ word }) {
                         );
                     })}
                 </>
-
                 : <></>
             }
-
-
         </div>
     );
 }
