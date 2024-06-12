@@ -56,13 +56,6 @@ function PrintPoem({ word }) {
             </div>
             <button onClick={handleEditClick}>Edit Your Poem</button>
 
-            {/* 
-            {definitionObj?.definitions?.map((def, i) => {
-                return (
-                    <p key={i}> definitions: {def} </p>
-                );
-            })} */}
-
             {definitionRequest === 1 ?
                 <>
                     <p>Definitions:</p>
@@ -73,7 +66,7 @@ function PrintPoem({ word }) {
                         );
                     })}
                 </>
-                : <>Not sure about a word? Click it to get it's definitions.</>
+                : <>Not sure about a word? Click it to get its definitions.</>
             }
         </div>
     );
